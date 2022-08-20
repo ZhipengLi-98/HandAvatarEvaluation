@@ -5,7 +5,9 @@ using System.IO;
 
 public class ApplyMaping : MonoBehaviour
 {
+    public GameObject leftHandIK;
     private string mapping_file = "./Assets/spider_mapping_baseline.txt";
+    private Dictionary<string, Quaternion> initialRotations = new Dictionary<string, Quaternion>();
 
     private Dictionary<GameObject, GameObject> mapping = new Dictionary<GameObject, GameObject>();
 
@@ -22,14 +24,9 @@ public class ApplyMaping : MonoBehaviour
             {
                 continue;
             }
-            print(joints[0]);
-            print(joints[0].Length);
-            print(joints[1]);
-            print(joints[1].Length);
             GameObject ajoint = GameObject.Find(joints[0]);
             GameObject hjoint = GameObject.Find(joints[1]);
-            print(ajoint.transform.name);
-            print(hjoint.transform.name);
+            initialRotations.Add(joints[0], ajoint.transform.rotation);
             mapping.Add(ajoint, hjoint);
         }
     }
@@ -55,7 +52,7 @@ public class ApplyMaping : MonoBehaviour
             }
             else
             {
-                pair.Key.transform.localRotation = pair.Value.transform.rotation;
+                pair.Key.transform.rotation = pair.Value.transform.rotation * initialRotations[pair.Key.transform.name];
             }
         }
     }

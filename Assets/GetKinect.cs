@@ -8,10 +8,13 @@ public class GetKinect : MonoBehaviour
 	private GameObject[] joints = null;
 	public GameObject jointPrefab;
     public int playerIndex = 0;
+	private Quaternion initialRotation = Quaternion.identity;
+
 
     // Start is called before the first frame update
     void Start()
     {
+		initialRotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
         manager = KinectManager.Instance;
 		if(manager && manager.IsInitialized())
 		{
