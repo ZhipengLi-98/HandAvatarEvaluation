@@ -25,7 +25,7 @@ public class GetKinect : MonoBehaviour
 				for(int i = 0; i < joints.Length; i++)
 				{
 					joints[i] = Instantiate(jointPrefab) as GameObject;
-					joints[i].transform.parent = transform;
+					// joints[i].transform.parent = transform;
 					joints[i].name = ((KinectInterop.JointType)i).ToString();
 					joints[i].SetActive(false);
 				}
@@ -61,9 +61,9 @@ public class GetKinect : MonoBehaviour
 								joints[i].SetActive(true);
 								joints[i].transform.position = posJoint;
 
-//								Quaternion rotJoint = manager.GetJointOrientation(userId, joint, false);
-//								rotJoint = initialRotation * rotJoint;
-//								joints[i].transform.rotation = rotJoint;
+								Quaternion rotJoint = manager.GetJointOrientation(userId, joint, true);
+								// rotJoint = initialRotation * rotJoint;
+								joints[i].transform.rotation = rotJoint;
 							}
 							else
 							{
