@@ -50,11 +50,11 @@ public class ApplyHandMapping : MonoBehaviour
         {
             if (pair.Key.transform.name == "Bone")
             {
-                pair.Key.transform.rotation = pair.Value.transform.rotation;
+                pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(-90, 90, 0);
             }
             else
             {
-                pair.Key.transform.rotation = pair.Value.transform.rotation;
+                pair.Key.transform.localRotation = Quaternion.Euler(-pair.Value.transform.localRotation.eulerAngles.z, pair.Value.transform.localRotation.eulerAngles.x, pair.Value.transform.localRotation.eulerAngles.y);
             }
         }
     }
