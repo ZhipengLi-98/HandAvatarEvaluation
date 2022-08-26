@@ -49,17 +49,34 @@ public class ElephantMapping : MonoBehaviour
         foreach (KeyValuePair<GameObject, GameObject> pair in mapping)
         {
                 // pair.Key.transform.rotation = Quaternion.Euler(-pair.Value.transform.rotation.eulerAngles.z, pair.Value.transform.rotation.eulerAngles.x, pair.Value.transform.rotation.eulerAngles.y);
-                if (pair.Value.transform.name.Contains("Left"))
+                if (pair.Key.transform.name.Contains("_R") && pair.Key.transform.name.Contains("Ear"))
                 {
-                    pair.Key.transform.rotation = pair.Value.transform.rotation;
+                    pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(-90, 270, 0);
                 }
-                else
+                else if (pair.Key.transform.name.Contains("_L") && pair.Key.transform.name.Contains("Ear"))
                 {
-                    pair.Key.transform.rotation = pair.Value.transform.rotation;
+                    pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(90, 270, 0);
                 }
-                // pair.Key.transform.localRotation = Quaternion.Euler(-pair.Value.transform.localRotation.eulerAngles.z, pair.Value.transform.localRotation.eulerAngles.x, pair.Value.transform.localRotation.eulerAngles.y);
-            
+                else if (pair.Key.transform.name.Contains("Root_M"))
+                {
+                    pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(180, 180, 180);
+                }
+                else if (pair.Key.transform.name.Contains("_M"))
+                {
+                    pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(180, 180, 90);
+                }
+                else if (pair.Key.transform.name.Contains("nose"))
+                {
+                    pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(0, 180, 0);
+                }
+                else if (pair.Key.transform.name.Contains("_L"))
+                {
+                    pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(0, 180, 0);
+                }
+                else if (pair.Key.transform.name.Contains("_R"))
+                {
+                    pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(0, 0, 0);
+                }
         }
-        
     }
 }
