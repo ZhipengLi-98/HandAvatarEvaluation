@@ -53,8 +53,6 @@ public class ElephantMapping : MonoBehaviour
             GameObject hjoint = GameObject.Find(joints[1]);
             if (ajoint != null && hjoint != null)
             {
-                print(ajoint);
-                print(hjoint);
                 mapping.Add(ajoint, hjoint);
                 controlledJoints.Add(ajoint.transform.name);
             }
@@ -130,5 +128,10 @@ public class ElephantMapping : MonoBehaviour
                 }
             }
         }
+    }
+
+    void OnApplicationQuit()
+    {
+        writer.Close();
     }
 }

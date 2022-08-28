@@ -7,6 +7,27 @@ public class SpiderMapping : MonoBehaviour
 {
     private string mapping_file = "./Assets/spider_mapping.txt";
     private Dictionary<GameObject, GameObject> mapping = new Dictionary<GameObject, GameObject>();
+    private List<string> controlledJoints = new List<string>();
+
+    public PlayAnimation player;
+    public RecordAvatar recorder;
+
+    public string fileName = "test.txt";
+    private StreamWriter writer;
+
+    string ConvertTransformToString(Transform trans)
+    {
+        string temp = trans.name;
+        for (int i = 0; i < 3; i++)
+        {
+            temp += " " + trans.position[i];
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            temp += " " + trans.rotation[i];
+        }
+        return temp;
+    }
 
     void readMapping()
     {
@@ -21,14 +42,19 @@ public class SpiderMapping : MonoBehaviour
             {
                 continue;
             }
-            print(joints[1]);
-            GameObject ajoint = GameObject.Find(joints[0]);
-            GameObject hjoint = GameObject.Find(joints[1]);
-            if (hjoint != null)
+            GameObject ajoint = null;
+            foreach (Transform g in this.transform.GetComponentsInChildren<Transform>())
             {
-                print(ajoint);
-                print(hjoint);
+                if (g.name == joints[0])
+                {
+                    ajoint = g.gameObject;
+                }
+            }
+            GameObject hjoint = GameObject.Find(joints[1]);
+            if (ajoint != null && hjoint != null)
+            {
                 mapping.Add(ajoint, hjoint);
+                controlledJoints.Add(ajoint.transform.name);
             }
         }
     }
@@ -36,7 +62,7 @@ public class SpiderMapping : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        writer = new StreamWriter(fileName);
     }
 
     // Update is called once per frame
@@ -72,5 +98,34 @@ public class SpiderMapping : MonoBehaviour
                 // pair.Key.transform.localRotation = Quaternion.Euler(-pair.Value.transform.localRotation.eulerAngles.z, pair.Value.transform.localRotation.eulerAngles.x, pair.Value.transform.localRotation.eulerAngles.y);
             }
         }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            int tempCnt = 0;
+            foreach (List<Transform> t in player.allMotions)
+            {
+                writer.WriteLine(tempCnt);
+                tempCnt += 1;
+                foreach (Transform tt in t)
+                {
+                    writer.WriteLine(ConvertTransformToString(tt));
+                }
+            }
+            writer.WriteLine("Users");
+            tempCnt = 0;
+            foreach (List<Transform> i in recorder.poses)
+            {
+                writer.WriteLine(tempCnt);
+                tempCnt += 1;
+                foreach (Transform j in i)
+                {
+                    writer.WriteLine(ConvertTransformToString(j));
+                }
+            }
+        }
+    }
+
+    void OnApplicationQuit()
+    {
+        writer.Close();
     }
 }
