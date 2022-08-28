@@ -8,24 +8,12 @@ public class RecordAvatar : MonoBehaviour
     private bool replay = false;
     private int cnt = 0;
 
-    public List<GameObject> avatarRecord;
+    public List<GameObject> avatarRecord = new List<GameObject>();
     public GameObject avatar;
     public GameObject avatarMesh;
     private string avatarMeshName = "";
 
-    string ConvertTransformToString(Transform trans)
-    {
-        string temp = trans.name;
-        for (int i = 0; i < 3; i++)
-        {
-            temp += " " + trans.position[i];
-        }
-        for (int i = 0; i < 4; i++)
-        {
-            temp += " " + trans.rotation[i];
-        }
-        return temp;
-    }
+    public List<Dictionary<string, Transform>> poses = new List<Dictionary<string, Transform>>();
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +34,7 @@ public class RecordAvatar : MonoBehaviour
                     Destroy(temp);
                 }
                 avatarRecord.Clear();
+                poses.Clear();
             }
         }
         if (avatarRecord.Count > 0 && avatarRecord[avatarRecord.Count - 1].activeSelf)
@@ -61,6 +50,12 @@ public class RecordAvatar : MonoBehaviour
             copyAvatar.transform.Find(avatarMeshName).gameObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
 
             avatarRecord.Add(copyAvatar);
+            Dictionary<string, Transform> temp = new Dictionary<string, Transform>();
+            foreach (Transform g in copyAvatar.transform.GetComponentsInChildren<Transform>())
+            {
+                temp.Add(g.name, g);
+            }
+            poses.Add(temp);
         }
         if (Input.GetKeyDown(KeyCode.W))
         {

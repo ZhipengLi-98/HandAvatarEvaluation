@@ -7,8 +7,27 @@ public class ElephantMapping : MonoBehaviour
 {
     private string mapping_file = "./Assets/elephant_mapping.txt";
     private Dictionary<GameObject, GameObject> mapping = new Dictionary<GameObject, GameObject>();
+    private List<string> controlledJoints = new List<string>();
 
-    private Animator animator;     
+    public PlayAnimation player;
+    public RecordAvatar recorder;
+
+    public string fileName = "test.txt";
+    private StreamWriter writer;
+
+    string ConvertTransformToString(Transform trans)
+    {
+        string temp = trans.name;
+        for (int i = 0; i < 3; i++)
+        {
+            temp += " " + trans.position[i];
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            temp += " " + trans.rotation[i];
+        }
+        return temp;
+    }
 
     void readMapping()
     {
@@ -23,13 +42,21 @@ public class ElephantMapping : MonoBehaviour
             {
                 continue;
             }
-            GameObject ajoint = GameObject.Find(joints[0]);
+            GameObject ajoint = null;
+            foreach (Transform g in this.transform.GetComponentsInChildren<Transform>())
+            {
+                if (g.name == joints[0])
+                {
+                    ajoint = g.gameObject;
+                }
+            }
             GameObject hjoint = GameObject.Find(joints[1]);
-            if (hjoint != null)
+            if (ajoint != null && hjoint != null)
             {
                 print(ajoint);
                 print(hjoint);
                 mapping.Add(ajoint, hjoint);
+                controlledJoints.Add(ajoint.transform.name);
             }
         }
     }
@@ -37,7 +64,7 @@ public class ElephantMapping : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = this.GetComponent<Animator>();
+        writer = new StreamWriter(fileName);
     }
 
     // Update is called once per frame
@@ -79,11 +106,32 @@ public class ElephantMapping : MonoBehaviour
                 pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(0, 0, 0);
             }
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            animator.enabled = true;
-            animator.speed = 1f;
-            animator.Play("Walk", 0, 0f);
+            int tempCnt = 0;
+            foreach (List<Transform> t in player.allMotions)
+            {
+                writer.WriteLine(tempCnt);
+                tempCnt += 1;
+                foreach (Transform tt in t)
+                {
+                    writer.WriteLine(ConvertTransformToString(tt));
+                }
+            }
+            writer.WriteLine("Users");
+            tempCnt = 0;
+            foreach (Dictionary<string, Transform> i in recorder.poses)
+            {
+                writer.WriteLine(tempCnt);
+                tempCnt += 1;
+                foreach (KeyValuePair<string, Transform> pair in i)
+                {
+                    if (controlledJoints.Contains(pair.Key))
+                    {
+                        writer.WriteLine(ConvertTransformToString(pair.Value));
+                    }
+                }
+            }
         }
     }
 }

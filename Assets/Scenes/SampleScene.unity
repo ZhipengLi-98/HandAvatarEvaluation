@@ -335,6 +335,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   avatarRecord: []
   avatar: {fileID: 770258324}
+  avatarMesh: {fileID: 1740887604}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +522,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c20220a0375b24fb3171928bd605c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2125319943}
+  recorder: {fileID: 640515370}
+  fileName: test.txt
 --- !u!95 &770258326 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 95574982075819074, guid: 9f261fd1add2311419c0a9eaeabc7d13,
@@ -878,6 +882,80 @@ CapsuleCollider:
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &1246770951
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1014789747999944, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
+      propertyPath: m_Name
+      value: African_elephant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.885
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95574982075819074, guid: 9f261fd1add2311419c0a9eaeabc7d13,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
 --- !u!1001 &1366147812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1264,6 +1342,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602533920}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1740887604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1175401276655572, guid: 9f261fd1add2311419c0a9eaeabc7d13,
+    type: 3}
+  m_PrefabInstance: {fileID: 770258323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1884636674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 487254, guid: 126d619cf4daa52469682f85c1378b4a,
@@ -1587,3 +1671,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &2125319940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1014789747999944, guid: 9f261fd1add2311419c0a9eaeabc7d13,
+    type: 3}
+  m_PrefabInstance: {fileID: 1246770951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2125319943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125319940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a454b98ecda4f4196efc84d29d6384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapping_file: ./Assets/elephant_mapping.txt
+  isAnimation: 0
