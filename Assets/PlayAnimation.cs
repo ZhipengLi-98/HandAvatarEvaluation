@@ -61,7 +61,7 @@ public class PlayAnimation : MonoBehaviour
             List<Transform> temp = new List<Transform>();
             foreach (Transform g in this.transform.GetComponentsInChildren<Transform>())
             {
-                if (controlledJoints.Contains(g.name))
+                // if (controlledJoints.Contains(g.name))
                 {
                     temp.Add(g);
                 }

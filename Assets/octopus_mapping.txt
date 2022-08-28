@@ -1,0 +1,14 @@
+Bone003: Right_Middle1
+Bone005: Right_Middle2
+Bone007: Right_Middle3
+Bone009: Right_MiddleTip
+Bone020: Left_Ring1
+Bone029: Left_Index1
+Bone024: Left_Index2
+Bone021: Left_Index3
+Bone022: Left_IndexTip
+Bone038: Left_Pinky1
+Bone046: Left_Middle1
+Bone056: Right_Index1
+Bone065: Right_Pinky1
+Bone074: Right_Ring1
