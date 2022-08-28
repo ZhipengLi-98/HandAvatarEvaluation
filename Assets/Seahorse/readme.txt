@@ -1,9 +1,9 @@
-Thank you for downlording.
+Thank you for downloading.
 
--Modals folder contains Seahorse.fbx.
-It contains 15 animations.
-mesh:
-1702triangles
-
+-Modals folder contains Swan1.fbx.
 -Scenes folder contains a demo scene.
--Prefabs folder contains Seahorse with animator controller and SeahorseRagdoll.
+-Prefabs folder contains a prefab that was used in the demo scene.
+
+For more information
+http://eizouasobi.blogspot.jp/search/label/Swan
+support@ryousirikigaku.com
