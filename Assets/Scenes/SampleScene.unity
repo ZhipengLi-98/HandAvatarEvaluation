@@ -279,7 +279,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 640515369}
-  - component: {fileID: 640515368}
   - component: {fileID: 640515370}
   m_Layer: 0
   m_Name: Manager
@@ -288,24 +287,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &640515368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640515367}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea2ac6439a0c8594bbb7cba2267804f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHand: {fileID: 288957792}
-  rightHand: {fileID: 640257166}
-  leftHandRecord: []
-  rightHandRecord: []
-  animator: {fileID: 770258326}
-  fileName: test.txt
 --- !u!4 &640515369
 Transform:
   m_ObjectHideFlags: 0
@@ -333,6 +314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b1f996e97926a94bb6ab51fed0d60fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flag: 0
+  player: {fileID: 2125319943}
   avatarRecord: []
   avatar: {fileID: 770258324}
   avatarMesh: {fileID: 1740887604}
@@ -525,12 +508,6 @@ MonoBehaviour:
   player: {fileID: 2125319943}
   recorder: {fileID: 640515370}
   fileName: test.txt
---- !u!95 &770258326 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 95574982075819074, guid: 9f261fd1add2311419c0a9eaeabc7d13,
-    type: 3}
-  m_PrefabInstance: {fileID: 770258323}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,7 +888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.03
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_LocalPosition.y
@@ -919,7 +896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.69
+      value: 2.31
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1690,4 +1667,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapping_file: ./Assets/elephant_mapping.txt
+  animator: {fileID: 2125319944}
   isAnimation: 0
+--- !u!95 &2125319944 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95574982075819074, guid: 9f261fd1add2311419c0a9eaeabc7d13,
+    type: 3}
+  m_PrefabInstance: {fileID: 1246770951}
+  m_PrefabAsset: {fileID: 0}

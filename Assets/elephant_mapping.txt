@@ -10,7 +10,6 @@ Head_M: Right_ForearmStub
 nose1: Right_Middle1
 nose2: Right_Middle2
 nose3: Right_Middle3
-Root_M: Left_ForearmStub
 frontRump_R: Left_Index1
 frontKnee_R: Left_Index2
 frontAnkle_R: Left_Index3

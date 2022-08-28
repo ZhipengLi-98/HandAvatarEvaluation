@@ -6,10 +6,10 @@ using System.IO;
 public class PlayAnimation : MonoBehaviour
 {
     public string mapping_file = "./Assets/elephant_mapping.txt";
-    private List<string> controlledJoints = new List<string>();
+    public List<string> controlledJoints = new List<string>();
     public List<List<Transform>> allMotions = new List<List<Transform>>();
 
-    private Animator animator;     
+    public Animator animator;     
     public bool isAnimation = false;
 
     private string fileName;
@@ -38,13 +38,11 @@ public class PlayAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (isAnimation && animator.GetCurrentAnimatorClipInfo(0).Length == 0)
         {
-            animator.enabled = true;
-            animator.speed = 1f;
-            animator.Play("Walk", 0, 0f);
+            isAnimation = false;
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             animator.enabled = true;
             animator.speed = 1f;
@@ -52,9 +50,11 @@ public class PlayAnimation : MonoBehaviour
             isAnimation = true;
             allMotions.Clear();
         }
-        if (animator.GetCurrentAnimatorClipInfo(0).Length > 0)
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            isAnimation = false;
+            animator.enabled = true;
+            animator.speed = 1f;
+            animator.Play("Walk", 0, 0f);
         }
         if (isAnimation)
         {

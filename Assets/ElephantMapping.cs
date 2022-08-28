@@ -120,16 +120,13 @@ public class ElephantMapping : MonoBehaviour
             }
             writer.WriteLine("Users");
             tempCnt = 0;
-            foreach (Dictionary<string, Transform> i in recorder.poses)
+            foreach (List<Transform> i in recorder.poses)
             {
                 writer.WriteLine(tempCnt);
                 tempCnt += 1;
-                foreach (KeyValuePair<string, Transform> pair in i)
+                foreach (Transform j in i)
                 {
-                    if (controlledJoints.Contains(pair.Key))
-                    {
-                        writer.WriteLine(ConvertTransformToString(pair.Value));
-                    }
+                    writer.WriteLine(ConvertTransformToString(j));
                 }
             }
         }

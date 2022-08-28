@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class RecordAvatar : MonoBehaviour
 {
-    private bool flag  = false;
+    public bool flag  = false;
     private bool replay = false;
     private int cnt = 0;
+
+    public PlayAnimation player;
 
     public List<GameObject> avatarRecord = new List<GameObject>();
     public GameObject avatar;
     public GameObject avatarMesh;
     private string avatarMeshName = "";
 
-    public List<Dictionary<string, Transform>> poses = new List<Dictionary<string, Transform>>();
+    public List<List<Transform>> poses = new List<List<Transform>>();
 
     // Start is called before the first frame update
     void Start()
@@ -24,9 +26,13 @@ public class RecordAvatar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (flag && player.animator.GetCurrentAnimatorClipInfo(0).Length == 0)
+        {
+            flag = false;
+        }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            flag = !flag;
+            flag = true;
             if (flag)
             {
                 foreach (GameObject temp in avatarRecord)
@@ -50,10 +56,13 @@ public class RecordAvatar : MonoBehaviour
             copyAvatar.transform.Find(avatarMeshName).gameObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
 
             avatarRecord.Add(copyAvatar);
-            Dictionary<string, Transform> temp = new Dictionary<string, Transform>();
+            List<Transform> temp = new List<Transform>();
             foreach (Transform g in copyAvatar.transform.GetComponentsInChildren<Transform>())
             {
-                temp.Add(g.name, g);
+                if (player.controlledJoints.Contains(g.name))
+                {
+                    temp.Add(g);
+                }
             }
             poses.Add(temp);
         }
@@ -66,14 +75,19 @@ public class RecordAvatar : MonoBehaviour
                 temp.transform.Find(avatarMeshName).gameObject.GetComponent<SkinnedMeshRenderer>().enabled = true;
                 temp.SetActive(false);
             }
+            if (replay)
+            {
+                avatar.SetActive(false);
+            }
         }        
-        if (replay)
+        if (replay && cnt < avatarRecord.Count)
         {
             avatarRecord[cnt].SetActive(false);
             cnt += 1;
             if (cnt > avatarRecord.Count - 1)
             {
                 replay = false;
+                avatar.SetActive(true);
                 cnt = 0;
             }
             else
