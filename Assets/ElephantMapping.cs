@@ -101,6 +101,12 @@ public class ElephantMapping : MonoBehaviour
                     {
                         g.position = new Vector3(float.Parse(information[1]), float.Parse(information[2]), float.Parse(information[3]));
                         g.rotation = new Quaternion(float.Parse(information[4]), float.Parse(information[5]), float.Parse(information[6]), float.Parse(information[7]));
+                        temp = "Left_" + temp;
+                        if (g.name.Split("_").Length == 4 && g.name.Split("_")[3] == "null")
+                        {
+                            temp = temp + "Tip";
+                        }
+                        initialHandRotations.Add(temp, g.transform.localRotation);
                         break;
                     }
                 }
@@ -118,6 +124,12 @@ public class ElephantMapping : MonoBehaviour
                     {
                         g.position = new Vector3(float.Parse(information[1]), float.Parse(information[2]), float.Parse(information[3]));
                         g.rotation = new Quaternion(float.Parse(information[4]), float.Parse(information[5]), float.Parse(information[6]), float.Parse(information[7]));
+                        temp = "Right_" + temp;
+                        if (g.name.Split("_").Length == 4 && g.name.Split("_")[3] == "null")
+                        {
+                            temp = temp + "Tip";
+                        }
+                        initialHandRotations.Add(temp, g.transform.localRotation);
                         break;
                     }
                 }
@@ -134,16 +146,16 @@ public class ElephantMapping : MonoBehaviour
     {
         if (UnityEngine.Input.GetKeyDown(KeyCode.A))
         {
-            OVRSkeleton leftSkeleton = leftHand.GetComponent<OVRSkeleton>();
-            for (int i = 0; i < leftSkeleton.Bones.Count; i++)
-            {
-                initialHandRotations.Add(leftSkeleton.Bones[i].Transform.name, leftSkeleton.Bones[i].Transform.localRotation);
-            }
-            OVRSkeleton rightSkeleton = rightHand.GetComponent<OVRSkeleton>();
-            for (int i = 0; i < rightSkeleton.Bones.Count; i++)
-            {
-                initialHandRotations.Add(rightSkeleton.Bones[i].Transform.name, rightSkeleton.Bones[i].Transform.localRotation);
-            }
+            // OVRSkeleton leftSkeleton = leftHand.GetComponent<OVRSkeleton>();
+            // for (int i = 0; i < leftSkeleton.Bones.Count; i++)
+            // {
+            //     initialHandRotations.Add(leftSkeleton.Bones[i].Transform.name, leftSkeleton.Bones[i].Transform.localRotation);
+            // }
+            // OVRSkeleton rightSkeleton = rightHand.GetComponent<OVRSkeleton>();
+            // for (int i = 0; i < rightSkeleton.Bones.Count; i++)
+            // {
+            //     initialHandRotations.Add(rightSkeleton.Bones[i].Transform.name, rightSkeleton.Bones[i].Transform.localRotation);
+            // }
             readMapping();
         }
         foreach (KeyValuePair<GameObject, GameObject> pair in mapping)
