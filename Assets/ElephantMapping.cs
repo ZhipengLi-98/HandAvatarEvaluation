@@ -123,10 +123,10 @@ public class ElephantMapping : MonoBehaviour
                 }
             }
         }
-        initialLeftHand.transform.position = new Vector3(0f, -0.5f, 0.1f);
-        initialLeftHand.transform.rotation = Quaternion.Euler(0, 180, 0);
-        initialRightHand.transform.position = new Vector3(0f, -0.5f, 0.1f);
-        initialRightHand.transform.rotation = Quaternion.Euler(0, 180, 0);
+        initialLeftHand.transform.position = new Vector3(0f, -0.1f, 0.2f);
+        // initialLeftHand.transform.rotation = Quaternion.Euler(0, 180, 0);
+        initialRightHand.transform.position = new Vector3(0f, -0.1f, 0.2f);
+        // initialRightHand.transform.rotation = Quaternion.Euler(0, 180, 0);
     }
 
     // Update is called once per frame
@@ -148,38 +148,41 @@ public class ElephantMapping : MonoBehaviour
         }
         foreach (KeyValuePair<GameObject, GameObject> pair in mapping)
         {
-            // pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
-            pair.Key.transform.localRotation = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
-            continue;
-            // pair.Key.transform.rotation = Quaternion.Euler(-pair.Value.transform.rotation.eulerAngles.z, pair.Value.transform.rotation.eulerAngles.x, pair.Value.transform.rotation.eulerAngles.y);
-            if (pair.Key.transform.name.Contains("_R") && pair.Key.transform.name.Contains("Ear"))
+            if (pair.Key.transform.name.Contains("Root_M"))
             {
-                pair.Key.transform.rotation = initialRotations[pair.Key.transform.name] * pair.Value.transform.rotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * Quaternion.Euler(-90, 270, 0);
-            }
-            else if (pair.Key.transform.name.Contains("_L") && pair.Key.transform.name.Contains("Ear"))
-            {
-                pair.Key.transform.rotation = initialRotations[pair.Key.transform.name] * pair.Value.transform.rotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * Quaternion.Euler(90, 270, 0);
-            }
-            else if (pair.Key.transform.name.Contains("Root_M"))
-            {
-                pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
+                pair.Key.transform.rotation = pair.Value.transform.rotation;
             }
             else if (pair.Key.transform.name.Contains("_M"))
             {
-                pair.Key.transform.rotation = initialRotations[pair.Key.transform.name] * pair.Value.transform.rotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * Quaternion.Euler(180, 180, 90);
+                pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(180, 180, 0);
             }
             else if (pair.Key.transform.name.Contains("nose"))
             {
-                pair.Key.transform.rotation = initialRotations[pair.Key.transform.name] * pair.Value.transform.rotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * Quaternion.Euler(0, 180, 0);
+                Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
+                Quaternion initial = initialRotations[pair.Key.transform.name];
+                pair.Key.transform.localRotation = Quaternion.Euler(temp.eulerAngles.x, temp.eulerAngles.y, -temp.eulerAngles.z) * initialRotations[pair.Key.transform.name];
             }
-            else if (pair.Key.transform.name.Contains("_L"))
+            else if (pair.Key.transform.name.Contains("Ear"))
             {
-                pair.Key.transform.rotation = initialRotations[pair.Key.transform.name] * pair.Value.transform.rotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * Quaternion.Euler(0, 180, 0);
+
+                Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
+                Quaternion initial = initialRotations[pair.Key.transform.name];
+                pair.Key.transform.localRotation = Quaternion.Euler(-temp.eulerAngles.x, temp.eulerAngles.y, temp.eulerAngles.z) * initialRotations[pair.Key.transform.name];
             }
-            else if (pair.Key.transform.name.Contains("_R"))
+            else if (pair.Key.transform.name.Contains("front"))
             {
-                pair.Key.transform.rotation = initialRotations[pair.Key.transform.name] * pair.Value.transform.rotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * Quaternion.Euler(0, 0, 0);
+                Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
+                Quaternion initial = initialRotations[pair.Key.transform.name];
+                pair.Key.transform.localRotation = Quaternion.Euler(temp.eulerAngles.x, temp.eulerAngles.y, -temp.eulerAngles.z) * initialRotations[pair.Key.transform.name];
             }
+            else
+            {
+                // pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
+                pair.Key.transform.localRotation = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
+            }
+            continue;
+            // pair.Key.transform.rotation = Quaternion.Euler(-pair.Value.transform.rotation.eulerAngles.z, pair.Value.transform.rotation.eulerAngles.x, pair.Value.transform.rotation.eulerAngles.y);
+            
         }
         if (Input.GetKeyDown(KeyCode.Z))
         {

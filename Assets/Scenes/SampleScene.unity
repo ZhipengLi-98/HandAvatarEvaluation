@@ -316,10 +316,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flag: 0
-  player: {fileID: 809315405}
+  player: {fileID: 2125319943}
   avatarRecord: []
-  avatar: {fileID: 969259515}
-  avatarMesh: {fileID: 977727147}
+  avatar: {fileID: 770258324}
+  avatarMesh: {fileID: 764634823}
 --- !u!114 &640515371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,6 +429,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &764634823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1175401276655572, guid: 9f261fd1add2311419c0a9eaeabc7d13,
+    type: 3}
+  m_PrefabInstance: {fileID: 770258323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &770258323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -442,7 +448,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1014789747999944, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_RootOrder
@@ -587,7 +593,7 @@ PrefabInstance:
     - target: {fileID: 5128811620208064792, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5470847905714145899, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
@@ -838,7 +844,7 @@ PrefabInstance:
     - target: {fileID: 5128811620208064792, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5470847905714145899, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
@@ -952,12 +958,6 @@ MonoBehaviour:
   initialRightHand: {fileID: 1863728759}
   leftHand: {fileID: 288957792}
   rightHand: {fileID: 640257166}
---- !u!1 &977727147 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4564163900601700228, guid: e42dce10de392fb46b7cf553d7658cf4,
-    type: 3}
-  m_PrefabInstance: {fileID: 969259514}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1125649104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1228,7 +1228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1014789747999944, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_RootOrder

@@ -6,7 +6,6 @@ Ear_R: Right_Pinky1
 EarPart1_R: Right_Pinky2
 EarPart2_R: Right_Pinky3
 EarEnd_R: Right_PinkyTip
-Head_M: Right_ForearmStub
 nose1: Right_Middle1
 nose4: Right_Middle2
 nose7: Right_Middle3
@@ -27,3 +26,4 @@ backKnee_L: Left_Pinky2
 backAnkle_L: Left_Pinky3
 backToes_L: Left_PinkyTip
 Root_M: Left_ForearmStub
+Neck_M: Right_ForearmStub
