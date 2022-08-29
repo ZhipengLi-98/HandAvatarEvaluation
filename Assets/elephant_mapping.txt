@@ -1,10 +1,10 @@
-Ear_L: Right_Index1
-EarPart1_L: Right_Index2
-EarPart2_L: Right_Index3
-EarEnd_L: Right_IndexTip
-Ear_R: Right_Ring1
-EarPart1_R: Right_Ring2
-EarPart2_R: Right_Ring3
+Ear_L: Right_Thumb1
+EarPart1_L: Right_Thumb2
+EarPart2_L: Right_Thumb3
+EarEnd_L: Right_ThumbTip
+Ear_R: Right_Pinky1
+EarPart1_R: Right_Pinky2
+EarPart2_R: Right_Pinky3
 EarEnd_R: Right_PinkyTip
 Head_M: Right_ForearmStub
 nose1: Right_Middle1
