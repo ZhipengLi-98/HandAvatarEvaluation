@@ -52,14 +52,14 @@ public class RecordAvatar : MonoBehaviour
             GameObject copyAvatar = Instantiate(avatar);
             copyAvatar.transform.position = avatar.transform.position;
             copyAvatar.transform.rotation = avatar.transform.rotation;
-            copyAvatar.GetComponent<SeahorseMapping>().enabled = false;
+            copyAvatar.GetComponent<ElephantMapping>().enabled = false;
             copyAvatar.transform.Find(avatarMeshName).gameObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
 
             avatarRecord.Add(copyAvatar);
             List<Transform> temp = new List<Transform>();
             foreach (Transform g in copyAvatar.transform.GetComponentsInChildren<Transform>())
             {
-                // if (player.controlledJoints.Contains(g.name))
+                if (player.controlledJoints.Contains(g.name))
                 {
                     temp.Add(g);
                 }

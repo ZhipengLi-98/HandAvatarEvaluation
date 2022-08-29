@@ -8,8 +8,8 @@ EarPart2_R: Right_Ring3
 EarEnd_R: Right_PinkyTip
 Head_M: Right_ForearmStub
 nose1: Right_Middle1
-nose2: Right_Middle2
-nose3: Right_Middle3
+nose4: Right_Middle2
+nose7: Right_Middle3
 frontRump_R: Left_Index1
 frontKnee_R: Left_Index2
 frontAnkle_R: Left_Index3
@@ -26,3 +26,4 @@ backRump_L: Left_Pinky1
 backKnee_L: Left_Pinky2
 backAnkle_L: Left_Pinky3
 backToes_L: Left_PinkyTip
+Root_M: Left_ForearmStub
