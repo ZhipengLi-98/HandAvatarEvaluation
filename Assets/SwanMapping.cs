@@ -164,6 +164,13 @@ public class SwanMapping : MonoBehaviour
                 pair.Key.transform.localRotation = Quaternion.Euler(temp.eulerAngles.z, temp.eulerAngles.y, temp.eulerAngles.x) * initial;
                 // pair.Key.transform.localRotation = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
             }
+            else if (pair.Value.transform.name.Contains("Left_Thumb1"))
+            {
+                Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
+                Quaternion initial = initialRotations[pair.Key.transform.name];
+                pair.Key.transform.localRotation = Quaternion.Euler(temp.eulerAngles.z, temp.eulerAngles.y, temp.eulerAngles.x) * initial;
+                // pair.Key.transform.localRotation = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
+            }
             else
             {
                 Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);

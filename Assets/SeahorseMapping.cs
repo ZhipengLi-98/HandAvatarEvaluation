@@ -27,6 +27,15 @@ public class SeahorseMapping : MonoBehaviour
 
     private bool flag = false;
 
+    private float timer = 0f;
+
+    private string clusterFile = "./cluster_poses/seahorse_poses.txt";
+    private List<Dictionary<string, List<float>>> clusterPoses = new List<Dictionary<string, List<float>>>();
+    private int clusterPoseCnt = 0;
+
+    public GameObject anotherAvatar;
+    private Vector3 anotherPosition;
+
     string ConvertTransformToString(Transform trans)
     {
         string temp = trans.name;
@@ -98,6 +107,42 @@ public class SeahorseMapping : MonoBehaviour
         }
     }
 
+    void ReadClusterPoses()
+    {
+        StreamReader reader = new StreamReader(clusterFile);
+        string content = reader.ReadToEnd();
+        reader.Close();
+        string[] poses = content.Split("#");
+        foreach (string pose in poses)
+        {
+            string[] pairs = pose.Split("\n");
+            Dictionary<string, List<float>> tt = new Dictionary<string, List<float>>();
+            foreach (string pair in pairs)
+            {
+                string[] data = pair.Split(" ");
+                if (data.Length == 7)
+                {
+                    List<float> t = new List<float>();
+                    for (int i = 0; i < 7; i++)
+                    {
+                        t.Add(float.Parse(data[i]));
+                    }
+                    tt.Add("Seahorse", t);
+                }
+                else if (data.Length == 8)
+                {
+                    List<float> t = new List<float>();
+                    for (int i = 1; i < 8; i++)
+                    {
+                        t.Add(float.Parse(data[i]));
+                    }
+                    tt.Add(data[0], t);
+                }
+            }
+            clusterPoses.Add(tt);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -150,12 +195,18 @@ public class SeahorseMapping : MonoBehaviour
         initialRightHand.transform.position = new Vector3(0f, 0.2f, 0.02f);
         // initialRightHand.transform.rotation = Quaternion.Euler(0, 180, 0);
 
+        anotherPosition = anotherAvatar.transform.position;
         ReadHandJoints();
+        ReadClusterPoses();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            flag = true;
+        }
         if (!flag)
         {
             OVRSkeleton rightSkeleton = rightHand.GetComponent<OVRSkeleton>();
@@ -171,7 +222,7 @@ public class SeahorseMapping : MonoBehaviour
                         float angle = 0f;
                         Vector3 axis = Vector3.zero;
                         (a * Quaternion.Inverse(b)).ToAngleAxis(out angle, out axis);
-                        if (angle > 15f)
+                        if (angle > 20)
                         {
                             tempFlag = false;
                             break;
@@ -180,8 +231,17 @@ public class SeahorseMapping : MonoBehaviour
                 }
                 if (tempFlag)
                 {
-                    flag = true;
-                    readMapping();
+                    timer += Time.deltaTime;
+                    if (timer > 1f)
+                    {
+                        flag = true;
+                        timer = 0f;
+                        readMapping();
+                    }
+                }
+                else
+                {
+                    timer = 0f;
                 }
             }
         }
@@ -198,7 +258,7 @@ public class SeahorseMapping : MonoBehaviour
                 {
                     Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
                     Quaternion initial = initialRotations[pair.Key.transform.name];
-                    pair.Key.transform.localRotation = Quaternion.Euler(temp.eulerAngles.x, temp.eulerAngles.y, -temp.eulerAngles.z) * initial;
+                    pair.Key.transform.localRotation = Quaternion.Euler(temp.eulerAngles.x, temp.eulerAngles.y, -temp.eulerAngles.z * 2) * initial;
                     // pair.Key.transform.localRotation = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
                 }
                 else
@@ -206,6 +266,29 @@ public class SeahorseMapping : MonoBehaviour
                     pair.Key.transform.localRotation = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            foreach (KeyValuePair<string, List<float>> pair in clusterPoses[clusterPoseCnt])
+            {
+                foreach (Transform g in anotherAvatar.transform.GetComponentsInChildren<Transform>())
+                {
+                    if (g.name == pair.Key)
+                    {
+                        g.position = new Vector3(pair.Value[0], pair.Value[1], pair.Value[2]);
+                        g.rotation = new Quaternion(pair.Value[3], pair.Value[4], pair.Value[5], pair.Value[6]);
+                        break;
+                    }
+                }
+            }
+            Vector3 offset = anotherAvatar.transform.position - anotherPosition;
+            print(offset);
+            foreach (Transform g in anotherAvatar.transform.GetComponentsInChildren<Transform>())
+            {
+                g.position -= offset;
+            }
+            clusterPoseCnt += 1;
         }
         
         if (Input.GetKeyDown(KeyCode.Z))
