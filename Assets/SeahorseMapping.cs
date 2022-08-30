@@ -120,16 +120,7 @@ public class SeahorseMapping : MonoBehaviour
             foreach (string pair in pairs)
             {
                 string[] data = pair.Split(" ");
-                if (data.Length == 7)
-                {
-                    List<float> t = new List<float>();
-                    for (int i = 0; i < 7; i++)
-                    {
-                        t.Add(float.Parse(data[i]));
-                    }
-                    tt.Add("Seahorse", t);
-                }
-                else if (data.Length == 8)
+                if (data.Length == 8)
                 {
                     List<float> t = new List<float>();
                     for (int i = 1; i < 8; i++)
@@ -276,19 +267,18 @@ public class SeahorseMapping : MonoBehaviour
                 {
                     if (g.name == pair.Key)
                     {
-                        g.position = new Vector3(pair.Value[0], pair.Value[1], pair.Value[2]);
-                        g.rotation = new Quaternion(pair.Value[3], pair.Value[4], pair.Value[5], pair.Value[6]);
+                        g.localPosition = new Vector3(pair.Value[0], pair.Value[1], pair.Value[2]);
+                        g.localRotation = new Quaternion(pair.Value[3], pair.Value[4], pair.Value[5], pair.Value[6]);
                         break;
                     }
                 }
             }
-            Vector3 offset = anotherAvatar.transform.position - anotherPosition;
-            print(offset);
-            foreach (Transform g in anotherAvatar.transform.GetComponentsInChildren<Transform>())
-            {
-                g.position -= offset;
-            }
             clusterPoseCnt += 1;
+        }
+        if (clusterPoseCnt > 0)
+        {
+            // after 1s, record the deviaiton of each joint (average)
+            // record the timer
         }
         
         if (Input.GetKeyDown(KeyCode.Z))
