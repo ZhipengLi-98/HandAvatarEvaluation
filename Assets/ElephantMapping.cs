@@ -176,7 +176,6 @@ public class ElephantMapping : MonoBehaviour
             }
             else if (pair.Key.transform.name.Contains("Ear"))
             {
-
                 Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
                 Quaternion initial = initialRotations[pair.Key.transform.name];
                 pair.Key.transform.localRotation = Quaternion.Euler(-temp.eulerAngles.x, temp.eulerAngles.y, temp.eulerAngles.z) * initialRotations[pair.Key.transform.name];

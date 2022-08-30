@@ -316,10 +316,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flag: 0
-  player: {fileID: 2125319943}
+  player: {fileID: 1588976842}
   avatarRecord: []
-  avatar: {fileID: 770258324}
-  avatarMesh: {fileID: 764634823}
+  avatar: {fileID: 1125649105}
+  avatarMesh: {fileID: 1126112239}
 --- !u!114 &640515371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,14 +327,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640515367}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa549ae89b080d346861b3e93a45eb7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   leftHand: {fileID: 288957792}
   rightHand: {fileID: 640257166}
-  fileName: spider_hand_pose.txt
+  fileName: swan_hand_pose.txt
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,12 +429,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &764634823 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1175401276655572, guid: 9f261fd1add2311419c0a9eaeabc7d13,
-    type: 3}
-  m_PrefabInstance: {fileID: 770258323}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &770258323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -448,7 +442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1014789747999944, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_RootOrder
@@ -971,7 +965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 131912, guid: fffc18c5a985b40269303967b31f3946, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 406204, guid: fffc18c5a985b40269303967b31f3946, type: 3}
       propertyPath: m_RootOrder
@@ -1060,6 +1054,16 @@ MonoBehaviour:
   player: {fileID: 1588976842}
   recorder: {fileID: 640515370}
   fileName: test.txt
+  initialLeftHand: {fileID: 1316314245}
+  initialRightHand: {fileID: 1863728759}
+  leftHand: {fileID: 288957792}
+  rightHand: {fileID: 640257166}
+--- !u!1 &1126112239 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 112580, guid: fffc18c5a985b40269303967b31f3946,
+    type: 3}
+  m_PrefabInstance: {fileID: 1125649104}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1232328823
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1228,7 +1232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1014789747999944, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_RootOrder
@@ -1662,7 +1666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 131912, guid: fffc18c5a985b40269303967b31f3946, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 406204, guid: fffc18c5a985b40269303967b31f3946, type: 3}
       propertyPath: m_RootOrder

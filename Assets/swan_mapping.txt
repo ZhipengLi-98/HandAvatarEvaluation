@@ -1,0 +1,15 @@
+L_Coracoid: Right_Thumb1
+L_Ulna: Right_Thumb2
+L_Metacapus: Right_Thumb3
+R_Coracoid: Left_Thumb1
+R_Ulna: Left_Thumb2
+R_Metacapus: Left_Thumb3
+Pelvis: Right_ForearmStub
+Neck.1: Right_Middle1
+Neck.4: Right_Middle2
+Neck.7: Right_Middle3
+Neck.10: Right_MiddleTip
+L_Tarsus.1: Left_Middle1
+L_Tarsus.2: Left_Middle2
+R_Tarsus.1: Left_Index1
+R_Tarsus.2: Left_Index2
