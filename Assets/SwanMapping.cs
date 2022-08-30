@@ -124,9 +124,9 @@ public class SwanMapping : MonoBehaviour
                 }
             }
         }
-        initialLeftHand.transform.position = new Vector3(0f, -0.1f, 0.2f);
+        initialLeftHand.transform.position = new Vector3(0f, 0.2f, 0.2f);
         // initialLeftHand.transform.rotation = Quaternion.Euler(0, 180, 0);
-        initialRightHand.transform.position = new Vector3(0f, -0.1f, 0.2f);
+        initialRightHand.transform.position = new Vector3(0f, 0.2f, 0.2f);
         // initialRightHand.transform.rotation = Quaternion.Euler(0, 180, 0);
     }
 
