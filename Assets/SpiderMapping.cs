@@ -101,12 +101,7 @@ public class SpiderMapping : MonoBehaviour
                     {
                         g.position = new Vector3(float.Parse(information[1]), float.Parse(information[2]), float.Parse(information[3]));
                         g.rotation = new Quaternion(float.Parse(information[4]), float.Parse(information[5]), float.Parse(information[6]), float.Parse(information[7]));
-                        temp = "Left_" + temp;
-                        if (g.name.Split("_").Length == 4 && g.name.Split("_")[3] == "null")
-                        {
-                            temp = temp + "Tip";
-                        }
-                        initialHandRotations.Add(temp, g.transform.localRotation);
+                        initialHandRotations.Add(information[0], g.transform.localRotation);
                         break;
                     }
                 }
@@ -124,12 +119,7 @@ public class SpiderMapping : MonoBehaviour
                     {
                         g.position = new Vector3(float.Parse(information[1]), float.Parse(information[2]), float.Parse(information[3]));
                         g.rotation = new Quaternion(float.Parse(information[4]), float.Parse(information[5]), float.Parse(information[6]), float.Parse(information[7]));
-                        temp = "Right_" + temp;
-                        if (g.name.Split("_").Length == 4 && g.name.Split("_")[3] == "null")
-                        {
-                            temp = temp + "Tip";
-                        }
-                        initialHandRotations.Add(temp, g.transform.localRotation);
+                        initialHandRotations.Add(information[0], g.transform.localRotation);
                         break;
                     }
                 }

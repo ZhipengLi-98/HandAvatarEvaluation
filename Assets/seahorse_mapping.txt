@@ -1,0 +1,9 @@
+Bone001: Right_Thumb0
+Bone002: Right_Thumb1
+Bone006: Right_Thumb2
+Bone010: Right_Thumb3
+Bone013: Right_ThumbTip
+Bone016: Right_Index1
+Bone018: Right_Index2
+Bone020: Right_Index3
+Dummy002: Right_ForearmStub
