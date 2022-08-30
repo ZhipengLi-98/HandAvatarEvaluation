@@ -160,11 +160,18 @@ public class SwanMapping : MonoBehaviour
                 pair.Key.transform.localRotation = Quaternion.Euler(temp.eulerAngles.z, temp.eulerAngles.x, -temp.eulerAngles.y) * initial;
                 // pair.Key.transform.localRotation = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
             }
-            else if (pair.Key.transform.name.Contains("Tarsus"))
+            else if (pair.Key.transform.name.Contains("Tarsus.1"))
             {
                 Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
                 Quaternion initial = initialRotations[pair.Key.transform.name];
                 pair.Key.transform.localRotation = Quaternion.Euler(-temp.eulerAngles.z, temp.eulerAngles.y, temp.eulerAngles.x) * initial;
+                // pair.Key.transform.localRotation = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
+            }
+            else if (pair.Key.transform.name.Contains("Tarsus.2"))
+            {
+                Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
+                Quaternion initial = initialRotations[pair.Key.transform.name];
+                pair.Key.transform.localRotation = Quaternion.Euler(temp.eulerAngles.z, temp.eulerAngles.y, temp.eulerAngles.x) * initial;
                 // pair.Key.transform.localRotation = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
             }
             else
