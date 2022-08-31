@@ -2850,6 +2850,11 @@ MonoBehaviour:
   user: {fileID: 2031215026}
   anotherUser: {fileID: 1001582418}
   mapping_file: ./Assets/spider_mapping_baseline.txt
+  player: {fileID: 809315405}
+  recorder: {fileID: 640515370}
+  text: {fileID: 1017920006}
+  fileName: test.txt
+  anotherAvatar: {fileID: 809315403}
 --- !u!114 &2034417998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2866,6 +2871,11 @@ MonoBehaviour:
   user: {fileID: 2031215026}
   anotherUser: {fileID: 1001582418}
   mapping_file: ./Assets/seahorse_mapping_baseline.txt
+  player: {fileID: 1950752380}
+  recorder: {fileID: 640515370}
+  text: {fileID: 1017920006}
+  fileName: test.txt
+  anotherAvatar: {fileID: 1950752378}
 --- !u!114 &2034417999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2882,6 +2892,11 @@ MonoBehaviour:
   user: {fileID: 2031215026}
   anotherUser: {fileID: 1001582418}
   mapping_file: ./Assets/swan_mapping_baseline.txt
+  player: {fileID: 1588976842}
+  recorder: {fileID: 640515370}
+  text: {fileID: 0}
+  fileName: test.txt
+  anotherAvatar: {fileID: 1588976840}
 --- !u!114 &2034418000
 MonoBehaviour:
   m_ObjectHideFlags: 0

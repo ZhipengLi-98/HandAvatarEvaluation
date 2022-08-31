@@ -202,6 +202,7 @@ public class SwanMapping : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             flag = true;
+            readMapping();
         }
         if (!flag)
         {

@@ -203,6 +203,7 @@ public class SeahorseMapping : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             flag = true;
+            readMapping();
         }
         if (!flag)
         {

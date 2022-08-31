@@ -40,6 +40,8 @@ public class ElephantBodyMapping : MonoBehaviour
     private int clusterPoseCnt = 0;
 
     public GameObject anotherAvatar;
+    
+    private float bestDeviation = 1e4f;
 
     string ConvertTransformToString(Transform trans)
     {
@@ -254,12 +256,17 @@ public class ElephantBodyMapping : MonoBehaviour
                     tDevia += angle;
                 }
             }
+            if (tDevia / controlledJoints.Count < bestDeviation)
+            {
+                bestDeviation = tDevia / controlledJoints.Count;
+            }
             if (tDevia / controlledJoints.Count > 15)
             {
                 // text.text = child.name + " " + angle.ToString();
                 tempFlag = false;
             }
-            text.text = (tDevia / controlledJoints.Count).ToString();
+            float duration = Time.time - recordTimer;
+            text.text = duration.ToString() + " " + (tDevia / controlledJoints.Count).ToString();
             if (tempFlag)
             {
                 tDevia /= controlledJoints.Count;
@@ -273,7 +280,6 @@ public class ElephantBodyMapping : MonoBehaviour
                         ttDevia += t;
                     }
                     ttDevia /= poseDeviations.Count;
-                    float duration = Time.time - recordTimer;
                     writer.WriteLine(clusterPoseCnt + " " + ttDevia + " " + duration.ToString());
                     poseFlag = true;
                     timer = 0f;
@@ -286,6 +292,15 @@ public class ElephantBodyMapping : MonoBehaviour
                 poseDeviations.Clear();
                 timer = 0f;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            float duration = Time.time - recordTimer;
+            writer.WriteLine(clusterPoseCnt + " " + bestDeviation + " " + duration.ToString());
+            poseFlag = true;
+            timer = 0f;
+            poseDeviations.Clear();
+            text.text = "Complete";
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
