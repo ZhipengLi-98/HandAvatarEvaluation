@@ -354,9 +354,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d37a42c3145f1f4c8e151bc7126e406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 969259517}
-  avatar: {fileID: 969259515}
-  fileName: spider_poses.txt
+  animator: {fileID: 1950752379}
+  avatar: {fileID: 1950752378}
+  fileName: seahorse_poses.txt
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,7 +611,7 @@ PrefabInstance:
     - target: {fileID: 5128811620208064792, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5470847905714145899, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
@@ -963,7 +963,7 @@ PrefabInstance:
     - target: {fileID: 5128811620208064792, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5470847905714145899, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
@@ -1079,12 +1079,6 @@ MonoBehaviour:
   leftHand: {fileID: 288957792}
   rightHand: {fileID: 640257166}
   anotherAvatar: {fileID: 809315403}
---- !u!95 &969259517 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5470847905714145899, guid: e42dce10de392fb46b7cf553d7658cf4,
-    type: 3}
-  m_PrefabInstance: {fileID: 969259514}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1001582417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1899,7 +1893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 173002, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 417222, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_RootOrder
@@ -2460,7 +2454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 173002, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 417222, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_RootOrder
