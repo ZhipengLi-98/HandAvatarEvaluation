@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class ApplyMaping : MonoBehaviour
+public class SpiderBodyMapping : MonoBehaviour
 {
     public GameObject avatar;
     public GameObject user;
@@ -13,7 +13,7 @@ public class ApplyMaping : MonoBehaviour
     private Dictionary<string, Quaternion> initialRotations = new Dictionary<string, Quaternion>();
     private Dictionary<string, Quaternion> initialUserRotations = new Dictionary<string, Quaternion>();
 
-    private string poseFile = "elephant_user_pose.txt";
+    private string poseFile = "spider_user_pose.txt";
 
     private Dictionary<GameObject, GameObject> mapping = new Dictionary<GameObject, GameObject>();
 
@@ -86,21 +86,29 @@ public class ApplyMaping : MonoBehaviour
         }
         foreach (KeyValuePair<GameObject, GameObject> pair in mapping)
         {
-            if (pair.Key.transform.name.Contains("Root_M"))
+            if (pair.Key.transform.name == "Bone")
             {
-                pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(0, 0, 180);
+                pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(90, 90, 0);
             }
-            else if (pair.Key.transform.name.Contains("nose1"))
+            else if (pair.Key.transform.name.Contains("Leg"))
             {
                 Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
                 Quaternion initial = initialRotations[pair.Key.transform.name];
-                pair.Key.transform.localRotation = Quaternion.Euler(0, 0, temp.eulerAngles.y) * initialRotations[pair.Key.transform.name];
+                if (pair.Key.transform.name.Contains("R."))
+                {
+                    pair.Key.transform.localRotation = Quaternion.Euler(-temp.eulerAngles.x, temp.eulerAngles.z, temp.eulerAngles.y) * initial;
+
+                }
+                else if (pair.Key.transform.name.Contains("L."))
+                {
+                    pair.Key.transform.localRotation = Quaternion.Euler(-temp.eulerAngles.x, -temp.eulerAngles.z, -temp.eulerAngles.y) * initial;
+                }
             }
-            else if (pair.Key.transform.name.Contains("nose"))
+            else if (pair.Key.transform.name.Contains("R.Bone.012") || (pair.Key.transform.name.Contains("R.Bone.013")))
             {
                 Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
                 Quaternion initial = initialRotations[pair.Key.transform.name];
-                pair.Key.transform.localRotation = Quaternion.Euler(0, 0, temp.eulerAngles.z) * initialRotations[pair.Key.transform.name];
+                pair.Key.transform.localRotation = Quaternion.Euler(temp.eulerAngles.x, temp.eulerAngles.y, -temp.eulerAngles.z) * initial;
             }
             else
             {

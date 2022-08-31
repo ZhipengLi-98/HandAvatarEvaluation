@@ -1,0 +1,7 @@
+Dummy002: joint_TorsoB
+Bone017: joint_ShoulderRT
+Bone018: joint_ElbowRT
+Bone020: joint_HandRT
+Bone002: joint_ShoulderLT
+Bone004: joint_ElbowLT
+Bone006: joint_HandLT

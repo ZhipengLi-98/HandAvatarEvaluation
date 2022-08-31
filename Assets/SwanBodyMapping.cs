@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class ApplyMaping : MonoBehaviour
+public class SwanBodyMapping : MonoBehaviour
 {
     public GameObject avatar;
     public GameObject user;
@@ -13,7 +13,7 @@ public class ApplyMaping : MonoBehaviour
     private Dictionary<string, Quaternion> initialRotations = new Dictionary<string, Quaternion>();
     private Dictionary<string, Quaternion> initialUserRotations = new Dictionary<string, Quaternion>();
 
-    private string poseFile = "elephant_user_pose.txt";
+    private string poseFile = "swan_user_pose.txt";
 
     private Dictionary<GameObject, GameObject> mapping = new Dictionary<GameObject, GameObject>();
 
@@ -86,23 +86,6 @@ public class ApplyMaping : MonoBehaviour
         }
         foreach (KeyValuePair<GameObject, GameObject> pair in mapping)
         {
-            if (pair.Key.transform.name.Contains("Root_M"))
-            {
-                pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(0, 0, 180);
-            }
-            else if (pair.Key.transform.name.Contains("nose1"))
-            {
-                Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
-                Quaternion initial = initialRotations[pair.Key.transform.name];
-                pair.Key.transform.localRotation = Quaternion.Euler(0, 0, temp.eulerAngles.y) * initialRotations[pair.Key.transform.name];
-            }
-            else if (pair.Key.transform.name.Contains("nose"))
-            {
-                Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
-                Quaternion initial = initialRotations[pair.Key.transform.name];
-                pair.Key.transform.localRotation = Quaternion.Euler(0, 0, temp.eulerAngles.z) * initialRotations[pair.Key.transform.name];
-            }
-            else
             {
                 pair.Key.transform.localRotation = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
             }

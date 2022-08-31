@@ -1,0 +1,9 @@
+Pelvis: joint_TorsoB
+L_Tarsus.1: joint_HipLT
+L_Tarsus.2: joint_KneeLT
+R_Tarsus.1: joint_HipRT
+R_Tarsus.2: joint_KneeRT
+L_Humerus: joint_ShoulderLT
+L_Ulna: joint_ElbowLT
+R_Humerus: joint_ShoulderRT
+R_Ulna: joint_ElbowRT
