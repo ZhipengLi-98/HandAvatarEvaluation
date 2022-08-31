@@ -41,7 +41,6 @@ public class SeahorseMapping : MonoBehaviour
     private int clusterPoseCnt = 0;
 
     public GameObject anotherAvatar;
-    private Vector3 anotherPosition;
 
     string ConvertTransformToString(Transform trans)
     {
@@ -194,7 +193,6 @@ public class SeahorseMapping : MonoBehaviour
         initialRightHand.transform.position = new Vector3(0f, 0.2f, 0.02f);
         // initialRightHand.transform.rotation = Quaternion.Euler(0, 180, 0);
 
-        anotherPosition = anotherAvatar.transform.position;
         ReadHandJoints();
         ReadClusterPoses();
     }
@@ -221,7 +219,7 @@ public class SeahorseMapping : MonoBehaviour
                         float angle = 0f;
                         Vector3 axis = Vector3.zero;
                         (a * Quaternion.Inverse(b)).ToAngleAxis(out angle, out axis);
-                        if (angle > 20)
+                        if (angle > 10)
                         {
                             tempFlag = false;
                             break;
