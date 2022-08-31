@@ -66,8 +66,8 @@ public class RecordAnimation : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
-            animator.enabled = true;
-            animator.Play("Walk", 0, 0f);
+            // animator.enabled = true;
+            // animator.Play("Walk", 0, 0f);
             isAnimation = true;
             allMotions.Clear();
         }
