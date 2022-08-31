@@ -354,9 +354,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d37a42c3145f1f4c8e151bc7126e406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1950752379}
-  avatar: {fileID: 1950752378}
-  fileName: seahorse_poses.txt
+  animator: {fileID: 1588976841}
+  avatar: {fileID: 1588976840}
+  fileName: swan_poses.txt
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,7 +1390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 131912, guid: fffc18c5a985b40269303967b31f3946, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 402612, guid: fffc18c5a985b40269303967b31f3946, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1893,7 +1893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 173002, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 417222, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_RootOrder
@@ -2257,7 +2257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 131912, guid: fffc18c5a985b40269303967b31f3946, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 406204, guid: fffc18c5a985b40269303967b31f3946, type: 3}
       propertyPath: m_RootOrder
@@ -2454,7 +2454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 173002, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 417222, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_RootOrder
