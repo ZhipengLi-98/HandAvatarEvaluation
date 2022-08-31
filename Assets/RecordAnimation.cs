@@ -32,7 +32,7 @@ public class RecordAnimation : MonoBehaviour
     }
 
     public Animator animator;
-    private Dictionary<string, List<Dictionary<string, TransformData>>> allMotions;
+    private List<Dictionary<string, TransformData>> allMotions;
     private bool isAnimation = false;
     private List<Dictionary<string, TransformData>> testMotions;
     private int TEST_MOTION_NUMBER = 5;
@@ -57,7 +57,7 @@ public class RecordAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        allMotions = new Dictionary<string, List<Dictionary<string, TransformData>>>();
+        allMotions = new List<Dictionary<string, TransformData>>();
         testMotions = new List<Dictionary<string, TransformData>>();
     }
 
@@ -75,12 +75,6 @@ public class RecordAnimation : MonoBehaviour
         {
             if (animator.GetCurrentAnimatorClipInfo(0).Length > 0)
             {
-                string state = animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
-                if (!allMotions.ContainsKey(state))
-                {
-                    List<Dictionary<string, TransformData>> t = new List<Dictionary<string, TransformData>>();
-                    allMotions.Add(state, t);
-                }
                 Dictionary<string, TransformData> temp = new Dictionary<string, TransformData>();
                 foreach(Transform child in avatar.GetComponentsInChildren<Transform>())
                 {
@@ -94,37 +88,29 @@ public class RecordAnimation : MonoBehaviour
                     TransformData tempChild = new TransformData(child);
                     temp.Add(child.name, tempChild);
                 }
-                allMotions[state].Add(temp);
+                allMotions.Add(temp);
             }
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Dictionary<string, TransformData> temp = new Dictionary<string, TransformData>();
+            foreach(Transform child in avatar.GetComponentsInChildren<Transform>())
+            {
+                if (avatar.transform.name == "trithemis_Main_ctrl")
+                {
+                    if (! (child.name.Contains("bone")))
+                    {
+                        continue;
+                    }
+                }
+                TransformData tempChild = new TransformData(child);
+                temp.Add(child.name, tempChild);
+            }
+            testMotions.Add(temp);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
-            testMotions.Clear();
             isAnimation = false;
-            List<string> motions = new List<string>(allMotions.Keys);
-            print(motions.Count);
-            int aniCount = motions.Count;
-            for (int i = 0; i < TEST_MOTION_NUMBER / aniCount; i++)
-            {
-                foreach (KeyValuePair<string, List<Dictionary<string, TransformData>>> pair in allMotions)
-                {
-                    int temp = Random.Range(0, pair.Value.Count);
-                    testMotions.Add(pair.Value[temp]);
-                }
-            }
-            int curCount = testMotions.Count;
-            List<string> recordMotion = new List<string>();
-            for (int i = curCount; i < TEST_MOTION_NUMBER; i++)
-            {
-                string randomMotion = motions[Random.Range(0, motions.Count)];
-                while(recordMotion.Contains(randomMotion))
-                {
-                    randomMotion = motions[Random.Range(0, motions.Count)];
-                }
-                recordMotion.Add(randomMotion);
-                int temp = Random.Range(0, allMotions[randomMotion].Count);
-                testMotions.Add(allMotions[randomMotion][temp]);
-            }
             print(testMotions.Count);
             animator.enabled = false;
             StreamWriter writer = new StreamWriter(fileName);
