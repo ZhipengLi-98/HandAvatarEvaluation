@@ -218,7 +218,7 @@ public class SwanMapping : MonoBehaviour
                         float angle = 0f;
                         Vector3 axis = Vector3.zero;
                         (a * Quaternion.Inverse(b)).ToAngleAxis(out angle, out axis);
-                        if (angle > 20)
+                        if (angle > 10)
                         {
                             tempFlag = false;
                             break;

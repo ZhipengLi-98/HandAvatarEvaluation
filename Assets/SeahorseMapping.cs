@@ -219,7 +219,7 @@ public class SeahorseMapping : MonoBehaviour
                         float angle = 0f;
                         Vector3 axis = Vector3.zero;
                         (a * Quaternion.Inverse(b)).ToAngleAxis(out angle, out axis);
-                        if (angle > 10)
+                        if (angle > 20)
                         {
                             tempFlag = false;
                             break;
