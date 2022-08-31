@@ -4,14 +4,18 @@ using UnityEngine;
 using System.IO;
 using TMPro;
 
-public class SeahorseMapping : MonoBehaviour
+public class ElephantBodyMapping : MonoBehaviour
 {
-    private string mapping_file = "./Assets/seahorse_mapping.txt";
+    public GameObject avatar;
+    public GameObject user;
+    public GameObject anotherUser;
+
+    public string mapping_file = "./Assets/spider_mapping_baseline.txt";
     private Dictionary<GameObject, GameObject> mapping = new Dictionary<GameObject, GameObject>();
-    private List<string> controlledJoints = new List<string>();
-    private List<string> controlledHandJoints = new List<string>();
     private Dictionary<string, Quaternion> initialRotations = new Dictionary<string, Quaternion>();
-    private Dictionary<string, Quaternion> initialHandRotations = new Dictionary<string, Quaternion>();
+    private Dictionary<string, Quaternion> initialUserRotations = new Dictionary<string, Quaternion>();
+    private List<string> controlledJoints = new List<string>();
+    private List<string> controlledUserJoints = new List<string>();
     private Dictionary<string, Quaternion> clusterPoseRotations = new Dictionary<string, Quaternion>();
     private List<float> poseDeviations = new List<float>();
 
@@ -23,20 +27,15 @@ public class SeahorseMapping : MonoBehaviour
     public string fileName = "test.txt";
     private StreamWriter writer;
 
-    private string poseFile = "seahorse_hand_pose.txt";
-    public GameObject initialLeftHand;
-    public GameObject initialRightHand;
-
-    public GameObject leftHand;
-    public GameObject rightHand;
-
+    private string poseFile = "elephant_user_pose.txt";
+    
     private bool flag = false;
     private bool poseFlag = false;
 
     private float timer = 0f;
     private float recordTimer = 0f;
 
-    private string clusterFile = "./cluster_poses/seahorse_poses.txt";
+    private string clusterFile = "./cluster_poses/elephant_poses.txt";
     private List<Dictionary<string, List<float>>> clusterPoses = new List<Dictionary<string, List<float>>>();
     private int clusterPoseCnt = 0;
 
@@ -70,33 +69,33 @@ public class SeahorseMapping : MonoBehaviour
                 continue;
             }
             GameObject ajoint = null;
-            foreach (Transform g in this.transform.GetComponentsInChildren<Transform>())
+            GameObject hjoint = null;
+            foreach (Transform g in avatar.transform.GetComponentsInChildren<Transform>())
             {
                 if (g.name == joints[0])
                 {
                     ajoint = g.gameObject;
+                    break;
                 }
             }
-            GameObject hjoint = GameObject.Find(joints[1]);
+            foreach (Transform g in user.transform.GetComponentsInChildren<Transform>())
+            {
+                if (g.name == joints[1])
+                {
+                    hjoint = g.gameObject;
+                    break;
+                }
+            }
             if (ajoint != null && hjoint != null)
             {
                 mapping.Add(ajoint, hjoint);
                 controlledJoints.Add(ajoint.transform.name);
-                initialRotations.Add(ajoint.transform.name, ajoint.transform.localRotation);
+                initialRotations.Add(joints[0], ajoint.transform.localRotation);
             }
         }
     }
-
-    string UppercaseFirst(string s)
-    {
-        if (string.IsNullOrEmpty(s))
-        {
-            return string.Empty;
-        }
-        return char.ToUpper(s[0]) + s.Substring(1);
-    }
-
-    void ReadHandJoints() 
+    
+    void ReadUserJoints() 
     {        
         StreamReader reader = new StreamReader(mapping_file);
         string content = reader.ReadToEnd();
@@ -109,7 +108,7 @@ public class SeahorseMapping : MonoBehaviour
             {
                 continue;
             }
-            controlledHandJoints.Add(joints[1]);
+            controlledUserJoints.Add(joints[1]);
         }
     }
 
@@ -143,58 +142,29 @@ public class SeahorseMapping : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text.text = "Perform the transparent gesture";
+        text.text = "Perform the human gesture";
         writer = new StreamWriter(fileName);
         StreamReader reader = new StreamReader(poseFile);
         string[] content = reader.ReadToEnd().Split("\n");
         foreach (string s in content)
         {
             string[] information = s.Split(" ");
-            if (s.Split("_")[0] == "Left")
+            foreach (Transform g in anotherUser.GetComponentsInChildren<Transform>())
             {
-            //     foreach (Transform g in initialLeftHand.transform.GetComponentsInChildren<Transform>())
-            //     {
-            //         if (!g.name.Contains("_") || g.name.Split("_")[0] != "b")
-            //         {
-            //             continue;
-            //         }
-            //         string temp = UppercaseFirst(g.name.Split("_")[2]);
-            //         if (information[0].Contains(temp))
-            //         {
-            //             g.position = new Vector3(float.Parse(information[1]), float.Parse(information[2]), float.Parse(information[3]));
-            //             g.rotation = new Quaternion(float.Parse(information[4]), float.Parse(information[5]), float.Parse(information[6]), float.Parse(information[7]));
-            //             initialHandRotations.Add(information[0], g.transform.localRotation);
-            //             break;
-            //         }
-            //     }
-            }
-            else
-            {
-                foreach (Transform g in initialRightHand.transform.GetComponentsInChildren<Transform>())
+                if (g.name == information[0])
                 {
-                    if (!g.name.Contains("_") || g.name.Split("_")[0] != "b")
-                    {
-                        continue;
-                    }
-                    string temp = UppercaseFirst(g.name.Split("_")[2]);
-                    if (information[0].Contains(temp))
-                    {
-                        g.position = new Vector3(float.Parse(information[1]), float.Parse(information[2]), float.Parse(information[3]));
-                        g.rotation = new Quaternion(float.Parse(information[4]), float.Parse(information[5]), float.Parse(information[6]), float.Parse(information[7]));
-                        initialHandRotations.Add(information[0], g.transform.localRotation);
-                        break;
-                    }
+                    g.position = new Vector3(float.Parse(information[1]), float.Parse(information[2]), float.Parse(information[3]));
+                    g.rotation = new Quaternion(float.Parse(information[4]), float.Parse(information[5]), float.Parse(information[6]), float.Parse(information[7]));
+                    initialUserRotations.Add(information[0], g.transform.localRotation);
+                    break;
                 }
             }
         }
-        initialLeftHand.transform.position = new Vector3(0f, 0.2f, 0.02f);
-        initialLeftHand.SetActive(false);
-        // initialLeftHand.transform.rotation = Quaternion.Euler(0, 180, 0);
-        initialRightHand.transform.position = new Vector3(0f, 0.2f, 0.02f);
-        // initialRightHand.transform.rotation = Quaternion.Euler(0, 180, 0);
 
-        ReadHandJoints();
+        ReadUserJoints();
         ReadClusterPoses();
+
+        anotherUser.transform.position = new Vector3(0, -1, 4);
     }
 
     // Update is called once per frame
@@ -203,64 +173,37 @@ public class SeahorseMapping : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             flag = true;
-        }
-        if (!flag)
-        {
-            OVRSkeleton rightSkeleton = rightHand.GetComponent<OVRSkeleton>();
-            if (rightSkeleton.Bones.Count > 10)
-            {
-                bool tempFlag = true;
-                for (int i = 0; i < rightSkeleton.Bones.Count; i++)
-                {
-                    if (controlledHandJoints.Contains(rightSkeleton.Bones[i].Transform.name))
-                    {
-                        Quaternion a = initialHandRotations[rightSkeleton.Bones[i].Transform.name];
-                        Quaternion b = rightSkeleton.Bones[i].Transform.localRotation;
-                        float angle = 0f;
-                        Vector3 axis = Vector3.zero;
-                        (a * Quaternion.Inverse(b)).ToAngleAxis(out angle, out axis);
-                        if (angle > 20)
-                        {
-                            tempFlag = false;
-                            break;
-                        }
-                    }
-                }
-                if (tempFlag)
-                {
-                    timer += Time.deltaTime;
-                    if (timer > 1f)
-                    {
-                        flag = true;
-                        timer = 0f;
-                        readMapping();
-                    }
-                }
-                else
-                {
-                    timer = 0f;
-                }
-            }
+            readMapping();
         }
         if (flag)
         {
             foreach (KeyValuePair<GameObject, GameObject> pair in mapping)
             {
-                if (pair.Value.transform.name.Contains("Forearm"))
+                if (pair.Key.transform.name.Contains("Root_M"))
                 {
-                    Quaternion temp = pair.Value.transform.rotation;
-                    pair.Key.transform.rotation = Quaternion.Euler(temp.eulerAngles.x, temp.eulerAngles.y, temp.eulerAngles.z + 30) * Quaternion.Euler(0, 180, 90);
+                    pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(0, 0, 180);
                 }
-                else if (pair.Key.transform.name.Contains("Bone016") || pair.Value.transform.name.Contains("Thumb"))
+                else if (pair.Key.transform.name.Contains("backRump"))
                 {
-                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
                     Quaternion initial = initialRotations[pair.Key.transform.name];
-                    pair.Key.transform.localRotation = Quaternion.Euler(temp.eulerAngles.x, temp.eulerAngles.y, -temp.eulerAngles.z * 2) * initial;
-                    // pair.Key.transform.localRotation = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(temp.eulerAngles.z, temp.eulerAngles.y, -temp.eulerAngles.x) * initialRotations[pair.Key.transform.name];
+                }
+                else if (pair.Key.transform.name.Contains("nose1"))
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, 0, temp.eulerAngles.y) * initialRotations[pair.Key.transform.name];
+                }
+                else if (pair.Key.transform.name.Contains("nose"))
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, 0, temp.eulerAngles.z) * initialRotations[pair.Key.transform.name];
                 }
                 else
                 {
-                    pair.Key.transform.localRotation = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
                 }
             }
         }
@@ -294,7 +237,7 @@ public class SeahorseMapping : MonoBehaviour
             // record the timer
             bool tempFlag = true;
             float tDevia = 0f;
-            foreach (Transform child in this.GetComponentsInChildren<Transform>())
+            foreach (Transform child in avatar.GetComponentsInChildren<Transform>())
             {
                 if (controlledJoints.Contains(child.name))
                 {
@@ -344,11 +287,10 @@ public class SeahorseMapping : MonoBehaviour
                 timer = 0f;
             }
         }
-        
+
         if (Input.GetKeyDown(KeyCode.Z))
         {
             int tempCnt = 0;
-            writer.WriteLine("Avatar");
             foreach (List<Transform> t in player.allMotions)
             {
                 writer.WriteLine(tempCnt);

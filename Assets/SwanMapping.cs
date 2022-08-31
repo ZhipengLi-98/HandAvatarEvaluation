@@ -286,7 +286,7 @@ public class SwanMapping : MonoBehaviour
                 }
             }
         }
-        if (Input.GetKeyDown(KeyCode.A) && clusterPoseCnt < 5)
+        if (Input.GetKeyDown(KeyCode.A) && clusterPoseCnt < 3)
         {
             text.text = clusterPoseCnt.ToString();
             clusterPoseRotations.Clear();
@@ -310,7 +310,7 @@ public class SwanMapping : MonoBehaviour
             }
             clusterPoseCnt += 1;
         }
-        if (!poseFlag && clusterPoseCnt > 0 && clusterPoseCnt < 6)
+        if (!poseFlag && clusterPoseCnt > 0 && clusterPoseCnt < 4)
         {
             // after 1s, record the deviaiton of each joint (average)
             // record the timer

@@ -287,7 +287,7 @@ public class SpiderMapping : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.A) && clusterPoseCnt < 5)
+        if (Input.GetKeyDown(KeyCode.A) && clusterPoseCnt < 3)
         {
             text.text = clusterPoseCnt.ToString();
             clusterPoseRotations.Clear();
@@ -310,7 +310,7 @@ public class SpiderMapping : MonoBehaviour
             }
             clusterPoseCnt += 1;
         }
-        if (!poseFlag && clusterPoseCnt > 0 && clusterPoseCnt < 6)
+        if (!poseFlag && clusterPoseCnt > 0 && clusterPoseCnt < 4)
         {
             // after 1s, record the deviaiton of each joint (average)
             // record the timer
@@ -333,7 +333,7 @@ public class SpiderMapping : MonoBehaviour
                     tDevia += angle;
                 }
             }
-            if (tDevia / controlledJoints.Count > 10)
+            if (tDevia / controlledJoints.Count > 15)
             {
                 // text.text = child.name + " " + angle.ToString();
                 tempFlag = false;

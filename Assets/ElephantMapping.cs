@@ -202,6 +202,7 @@ public class ElephantMapping : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             flag = true;
+            readMapping();
         }
         if (!flag)
         {
