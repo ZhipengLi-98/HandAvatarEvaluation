@@ -144,6 +144,7 @@ public class SeahorseMapping : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        text.text = "Perform the transparent gesture";
         writer = new StreamWriter(fileName);
         StreamReader reader = new StreamReader(poseFile);
         string[] content = reader.ReadToEnd().Split("\n");
@@ -250,7 +251,7 @@ public class SeahorseMapping : MonoBehaviour
                 if (pair.Value.transform.name.Contains("Forearm"))
                 {
                     Quaternion temp = pair.Value.transform.rotation;
-                    pair.Key.transform.rotation = Quaternion.Euler(temp.eulerAngles.x, temp.eulerAngles.y, temp.eulerAngles.z) * Quaternion.Euler(0, 180, 90);
+                    pair.Key.transform.rotation = Quaternion.Euler(temp.eulerAngles.x, temp.eulerAngles.y, temp.eulerAngles.z + 30) * Quaternion.Euler(0, 180, 90);
                 }
                 else if (pair.Key.transform.name.Contains("Bone016") || pair.Value.transform.name.Contains("Thumb"))
                 {
@@ -289,7 +290,7 @@ public class SeahorseMapping : MonoBehaviour
             }
             clusterPoseCnt += 1;
         }
-        if (!poseFlag && clusterPoseCnt > 0 && clusterPoseCnt < 5)
+        if (!poseFlag && clusterPoseCnt > 0 && clusterPoseCnt < 6)
         {
             // after 1s, record the deviaiton of each joint (average)
             // record the timer
@@ -310,15 +311,14 @@ public class SeahorseMapping : MonoBehaviour
                     }
                     angle = Mathf.Abs(angle);
                     tDevia += angle;
-                    if (angle > 40)
-                    {
-                        text.text = child.name + " " + angle.ToString();
-                        tempFlag = false;
-                        break;
-                    }
                 }
             }
-            // text.text = (tDevia / controlledJoints.Count).ToString();
+            if (tDevia / controlledJoints.Count > 15)
+            {
+                // text.text = child.name + " " + angle.ToString();
+                tempFlag = false;
+            }
+            text.text = (tDevia / controlledJoints.Count).ToString();
             if (tempFlag)
             {
                 tDevia /= controlledJoints.Count;
@@ -350,6 +350,7 @@ public class SeahorseMapping : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             int tempCnt = 0;
+            writer.WriteLine("Avatar");
             foreach (List<Transform> t in player.allMotions)
             {
                 writer.WriteLine(tempCnt);

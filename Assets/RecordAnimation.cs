@@ -38,7 +38,7 @@ public class RecordAnimation : MonoBehaviour
     private int TEST_MOTION_NUMBER = 5;
 
     public GameObject avatar;
-    public string fileName = "swan_poses.txt";
+    public string fileName = "seahorse_poses.txt";
 
     string ConvertTransformToString(TransformData trans)
     {

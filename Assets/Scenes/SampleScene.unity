@@ -1838,7 +1838,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1950752380}
   recorder: {fileID: 640515370}
-  textObject: {fileID: 1017920004}
   text: {fileID: 1017920006}
   fileName: test.txt
   initialLeftHand: {fileID: 1316314245}

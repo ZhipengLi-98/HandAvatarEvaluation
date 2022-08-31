@@ -52,7 +52,7 @@ public class RecordAvatar : MonoBehaviour
             GameObject copyAvatar = Instantiate(avatar);
             copyAvatar.transform.position = avatar.transform.position;
             copyAvatar.transform.rotation = avatar.transform.rotation;
-            copyAvatar.GetComponent<SwanMapping>().enabled = false;
+            copyAvatar.GetComponent<SeahorseMapping>().enabled = false;
             copyAvatar.transform.Find(avatarMeshName).gameObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
 
             avatarRecord.Add(copyAvatar);
