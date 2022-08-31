@@ -1,9 +1,10 @@
 Pelvis: joint_TorsoB
 L_Tarsus.1: joint_HipLT
-L_Tarsus.2: joint_KneeLT
+L_Tarsus.2: joint_FootLT
 R_Tarsus.1: joint_HipRT
-R_Tarsus.2: joint_KneeRT
+R_Tarsus.2: joint_FootRT
 L_Humerus: joint_ShoulderLT
 L_Ulna: joint_ElbowLT
 R_Humerus: joint_ShoulderRT
 R_Ulna: joint_ElbowRT
+Neck.1: joint_Neck

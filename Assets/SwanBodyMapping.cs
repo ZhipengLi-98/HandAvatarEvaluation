@@ -27,7 +27,7 @@ public class SwanBodyMapping : MonoBehaviour
     public string fileName = "test.txt";
     private StreamWriter writer;
 
-    private string poseFile = "elephant_user_pose.txt";
+    private string poseFile = "swan_user_pose.txt";
     
     private bool flag = false;
     private bool poseFlag = false;
@@ -35,7 +35,7 @@ public class SwanBodyMapping : MonoBehaviour
     private float timer = 0f;
     private float recordTimer = 0f;
 
-    private string clusterFile = "./cluster_poses/elephant_poses.txt";
+    private string clusterFile = "./cluster_poses/swan_poses.txt";
     private List<Dictionary<string, List<float>>> clusterPoses = new List<Dictionary<string, List<float>>>();
     private int clusterPoseCnt = 0;
 
@@ -181,6 +181,30 @@ public class SwanBodyMapping : MonoBehaviour
         {
             foreach (KeyValuePair<GameObject, GameObject> pair in mapping)
             {
+                if (pair.Key.transform.name == "Pelvis")
+                {
+                    Quaternion temp = pair.Value.transform.rotation;
+                    pair.Key.transform.rotation = Quaternion.Euler(-temp.eulerAngles.z, temp.eulerAngles.y + 90, temp.eulerAngles.x);
+                }
+                else if (pair.Key.transform.name.Contains("R_Humerus") || pair.Key.transform.name.Contains("R_Ulna"))
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, temp.eulerAngles.x, -temp.eulerAngles.z) * initialRotations[pair.Key.transform.name];
+                }
+                else if (pair.Key.transform.name.Contains("L_Humerus"))
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, -temp.eulerAngles.x, temp.eulerAngles.z) * initialRotations[pair.Key.transform.name];
+                }
+                else if (pair.Key.transform.name.Contains("Neck"))
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(2 * temp.eulerAngles.z, 0, 0) * initialRotations[pair.Key.transform.name];
+                }
+                else
                 {
                     pair.Key.transform.localRotation = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
                 }
