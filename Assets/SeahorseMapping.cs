@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using TMPro;
 
 public class SeahorseMapping : MonoBehaviour
 {
@@ -11,9 +12,13 @@ public class SeahorseMapping : MonoBehaviour
     private List<string> controlledHandJoints = new List<string>();
     private Dictionary<string, Quaternion> initialRotations = new Dictionary<string, Quaternion>();
     private Dictionary<string, Quaternion> initialHandRotations = new Dictionary<string, Quaternion>();
+    private Dictionary<string, Quaternion> clusterPoseRotations = new Dictionary<string, Quaternion>();
+    private List<float> poseDeviations = new List<float>();
 
     public PlayAnimation player;
     public RecordAvatar recorder;
+
+    public TextMeshProUGUI text;
 
     public string fileName = "test.txt";
     private StreamWriter writer;
@@ -26,8 +31,10 @@ public class SeahorseMapping : MonoBehaviour
     public GameObject rightHand;
 
     private bool flag = false;
+    private bool poseFlag = false;
 
     private float timer = 0f;
+    private float recordTimer = 0f;
 
     private string clusterFile = "./cluster_poses/seahorse_poses.txt";
     private List<Dictionary<string, List<float>>> clusterPoses = new List<Dictionary<string, List<float>>>();
@@ -259,8 +266,14 @@ public class SeahorseMapping : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && clusterPoseCnt < 5)
         {
+            text.text = clusterPoseCnt.ToString();
+            clusterPoseRotations.Clear();
+            poseDeviations.Clear();
+            timer = 0f;
+            recordTimer = Time.time;
+            poseFlag = false;
             foreach (KeyValuePair<string, List<float>> pair in clusterPoses[clusterPoseCnt])
             {
                 foreach (Transform g in anotherAvatar.transform.GetComponentsInChildren<Transform>())
@@ -269,16 +282,69 @@ public class SeahorseMapping : MonoBehaviour
                     {
                         g.localPosition = new Vector3(pair.Value[0], pair.Value[1], pair.Value[2]);
                         g.localRotation = new Quaternion(pair.Value[3], pair.Value[4], pair.Value[5], pair.Value[6]);
+                        clusterPoseRotations.Add(g.name, g.localRotation);
                         break;
                     }
                 }
             }
             clusterPoseCnt += 1;
         }
-        if (clusterPoseCnt > 0)
+        if (!poseFlag && clusterPoseCnt > 0 && clusterPoseCnt < 5)
         {
             // after 1s, record the deviaiton of each joint (average)
             // record the timer
+            bool tempFlag = true;
+            float tDevia = 0f;
+            foreach (Transform child in this.GetComponentsInChildren<Transform>())
+            {
+                if (controlledJoints.Contains(child.name))
+                {
+                    Quaternion a = clusterPoseRotations[child.name];
+                    Quaternion b = child.localRotation;
+                    float angle = 0f;
+                    Vector3 axis = Vector3.zero;
+                    (a * Quaternion.Inverse(b)).ToAngleAxis(out angle, out axis);
+                    if (angle > 180)
+                    {
+                        angle -= 360;
+                    }
+                    angle = Mathf.Abs(angle);
+                    tDevia += angle;
+                    if (angle > 40)
+                    {
+                        text.text = child.name + " " + angle.ToString();
+                        tempFlag = false;
+                        break;
+                    }
+                }
+            }
+            // text.text = (tDevia / controlledJoints.Count).ToString();
+            if (tempFlag)
+            {
+                tDevia /= controlledJoints.Count;
+                poseDeviations.Add(tDevia);
+                timer += Time.deltaTime;
+                if (timer > 1f)
+                {
+                    float ttDevia = 0f;
+                    foreach (float t in poseDeviations)
+                    {
+                        ttDevia += t;
+                    }
+                    ttDevia /= poseDeviations.Count;
+                    float duration = Time.time - recordTimer;
+                    writer.WriteLine(clusterPoseCnt + " " + ttDevia + " " + duration.ToString());
+                    poseFlag = true;
+                    timer = 0f;
+                    poseDeviations.Clear();
+                    text.text = "Complete";
+                }
+            }
+            else
+            {
+                poseDeviations.Clear();
+                timer = 0f;
+            }
         }
         
         if (Input.GetKeyDown(KeyCode.Z))
