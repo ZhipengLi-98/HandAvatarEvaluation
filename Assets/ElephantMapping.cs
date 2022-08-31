@@ -40,6 +40,7 @@ public class ElephantMapping : MonoBehaviour
     private List<Dictionary<string, List<float>>> clusterPoses = new List<Dictionary<string, List<float>>>();
     private int clusterPoseCnt = 0;
 
+    public GameObject avatar;
     public GameObject anotherAvatar;
 
     string ConvertTransformToString(Transform trans)
@@ -70,7 +71,7 @@ public class ElephantMapping : MonoBehaviour
                 continue;
             }
             GameObject ajoint = null;
-            foreach (Transform g in this.transform.GetComponentsInChildren<Transform>())
+            foreach (Transform g in avatar.transform.GetComponentsInChildren<Transform>())
             {
                 if (g.name == joints[0])
                 {
@@ -311,7 +312,7 @@ public class ElephantMapping : MonoBehaviour
             // record the timer
             bool tempFlag = true;
             float tDevia = 0f;
-            foreach (Transform child in this.GetComponentsInChildren<Transform>())
+            foreach (Transform child in avatar.GetComponentsInChildren<Transform>())
             {
                 if (controlledJoints.Contains(child.name))
                 {
