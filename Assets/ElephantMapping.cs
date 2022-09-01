@@ -20,7 +20,7 @@ public class ElephantMapping : MonoBehaviour
 
     public TextMeshProUGUI text;
 
-    public string fileName = "test.txt";
+    public string userName = "";
     private StreamWriter writer;
 
     private string poseFile = "elephant_hand_pose.txt";
@@ -147,7 +147,8 @@ public class ElephantMapping : MonoBehaviour
     void Start()
     {
         text.text = "Perform the transparent gesture";
-        writer = new StreamWriter(fileName);
+        userName += "_elephant_hand.txt"
+        writer = new StreamWriter(userName);
         StreamReader reader = new StreamReader(poseFile);
         string[] content = reader.ReadToEnd().Split("\n");
         foreach (string s in content)
@@ -257,6 +258,12 @@ public class ElephantMapping : MonoBehaviour
                 {
                     pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(180, 180, 0);
                 }
+                else if (pair.Key.transform.name.Contains("nose1"))
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(temp.eulerAngles.x, temp.eulerAngles.y, temp.eulerAngles.z) * initialRotations[pair.Key.transform.name];
+                }
                 else if (pair.Key.transform.name.Contains("nose"))
                 {
                     Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
@@ -335,12 +342,12 @@ public class ElephantMapping : MonoBehaviour
             {
                 bestDeviation = tDevia / controlledJoints.Count;
             }
-            if (tDevia / controlledJoints.Count > 15)
+            if (tDevia / controlledJoints.Count > 0)
             {
                 // text.text = child.name + " " + angle.ToString();
                 tempFlag = false;
             }
-            text.text = (tDevia / controlledJoints.Count).ToString();
+            // text.text = (tDevia / controlledJoints.Count).ToString();
             if (tempFlag)
             {
                 tDevia /= controlledJoints.Count;

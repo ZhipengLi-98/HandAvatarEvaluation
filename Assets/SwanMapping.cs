@@ -20,7 +20,7 @@ public class SwanMapping : MonoBehaviour
 
     public TextMeshProUGUI text;
 
-    public string fileName = "test.txt";
+    public string userName = "";
     private StreamWriter writer;
 
     private string poseFile = "swan_hand_pose.txt";
@@ -147,7 +147,8 @@ public class SwanMapping : MonoBehaviour
     void Start()
     {
         text.text = "Perform the transparent gesture";
-        writer = new StreamWriter(fileName);
+        userName += "_swan_hand.txt"
+        writer = new StreamWriter(userName);
         StreamReader reader = new StreamReader(poseFile);
         string[] content = reader.ReadToEnd().Split("\n");
         foreach (string s in content)
@@ -341,12 +342,12 @@ public class SwanMapping : MonoBehaviour
             {
                 bestDeviation = tDevia / controlledJoints.Count;
             }
-            if (tDevia / controlledJoints.Count > 15)
+            if (tDevia / controlledJoints.Count > 0)
             {
                 // text.text = child.name + " " + angle.ToString();
                 tempFlag = false;
             }
-            text.text = (tDevia / controlledJoints.Count).ToString();
+            // text.text = (tDevia / controlledJoints.Count).ToString();
             if (tempFlag)
             {
                 tDevia /= controlledJoints.Count;

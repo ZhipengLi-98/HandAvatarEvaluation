@@ -323,9 +323,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flag: 0
-  player: {fileID: 1588976842}
+  player: {fileID: 1950752380}
   avatarRecord: []
-  avatar: {fileID: 1125649105}
+  avatar: {fileID: 1319249421}
 --- !u!114 &640515371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,15 +499,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1347,7 +1347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 131912, guid: fffc18c5a985b40269303967b31f3946, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 402612, guid: fffc18c5a985b40269303967b31f3946, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1833,7 +1833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 173002, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 417222, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_RootOrder
@@ -2164,7 +2164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 131912, guid: fffc18c5a985b40269303967b31f3946, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 406204, guid: fffc18c5a985b40269303967b31f3946, type: 3}
       propertyPath: m_RootOrder
@@ -2295,7 +2295,7 @@ MonoBehaviour:
   player: {fileID: 2125319943}
   recorder: {fileID: 640515370}
   text: {fileID: 1017920006}
-  fileName: test.txt
+  fileName: lzp_elephant_hand.txt
   initialLeftHand: {fileID: 1316314245}
   initialRightHand: {fileID: 1863728759}
   leftHand: {fileID: 288957792}
@@ -2324,7 +2324,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607736579}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39198553f217f78408975ac4ddb77076, type: 3}
   m_Name: 
@@ -2346,7 +2346,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607736579}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e78d5776c0d7a304ab8a273f8ab2e46a, type: 3}
   m_Name: 
@@ -2488,7 +2488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 173002, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 417222, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_RootOrder
@@ -2888,7 +2888,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034417992}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8442a7a20ee213743ae9d4d8c6c1248b, type: 3}
   m_Name: 
@@ -2909,7 +2909,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034417992}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fee3ba17fcd139459e606371cbdca05, type: 3}
   m_Name: 
