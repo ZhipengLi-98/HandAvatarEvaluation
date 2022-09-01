@@ -42,6 +42,8 @@ public class ElephantMapping : MonoBehaviour
 
     public GameObject avatar;
     public GameObject anotherAvatar;
+    
+    private float bestDeviation = 1e4f;
 
     string ConvertTransformToString(Transform trans)
     {
@@ -329,6 +331,10 @@ public class ElephantMapping : MonoBehaviour
                     tDevia += angle;
                 }
             }
+            if (tDevia / controlledJoints.Count < bestDeviation)
+            {
+                bestDeviation = tDevia / controlledJoints.Count;
+            }
             if (tDevia / controlledJoints.Count > 15)
             {
                 // text.text = child.name + " " + angle.ToString();
@@ -361,6 +367,15 @@ public class ElephantMapping : MonoBehaviour
                 poseDeviations.Clear();
                 timer = 0f;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            float duration = Time.time - recordTimer;
+            writer.WriteLine(clusterPoseCnt + " " + bestDeviation + " " + duration.ToString());
+            poseFlag = true;
+            timer = 0f;
+            poseDeviations.Clear();
+            text.text = "Complete";
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
