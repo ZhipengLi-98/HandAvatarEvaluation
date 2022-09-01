@@ -368,7 +368,7 @@ public class ElephantMapping : MonoBehaviour
                 timer = 0f;
             }
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.T))
         {
             float duration = Time.time - recordTimer;
             writer.WriteLine(clusterPoseCnt + " " + bestDeviation + " " + duration.ToString());
@@ -380,6 +380,9 @@ public class ElephantMapping : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            print(player.allMotions.Count);
+            print(recorder.poses.Count);
+            writer.WriteLine("Avatar");
             int tempCnt = 0;
             foreach (List<Transform> t in player.allMotions)
             {

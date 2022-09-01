@@ -189,13 +189,19 @@ public class SeahorseBodyMapping : MonoBehaviour
                 {
                     Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
                     Quaternion initial = initialRotations[pair.Key.transform.name];
-                    pair.Key.transform.localRotation = Quaternion.Euler(0, temp.eulerAngles.x, temp.eulerAngles.z) * initial;
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, 0, temp.eulerAngles.z) * initial;
+                }
+                else if (pair.Key.transform.name == "Bone018")
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, 0, -temp.eulerAngles.z) * initial;
                 }
                 else
                 {
                     Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
                     Quaternion initial = initialRotations[pair.Key.transform.name];
-                    pair.Key.transform.localRotation = Quaternion.Euler(temp.eulerAngles.z, 0, temp.eulerAngles.x) * initial;
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, 0, 20 + temp.eulerAngles.x) * initial;
                 }
             }
         }
@@ -282,7 +288,7 @@ public class SeahorseBodyMapping : MonoBehaviour
                 timer = 0f;
             }
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.T))
         {
             float duration = Time.time - recordTimer;
             writer.WriteLine(clusterPoseCnt + " " + bestDeviation + " " + duration.ToString());
@@ -294,6 +300,9 @@ public class SeahorseBodyMapping : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            print(player.allMotions.Count);
+            print(recorder.poses.Count);
+            writer.WriteLine("Avatar");
             int tempCnt = 0;
             foreach (List<Transform> t in player.allMotions)
             {

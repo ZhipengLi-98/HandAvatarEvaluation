@@ -352,7 +352,7 @@ public class SeahorseMapping : MonoBehaviour
                 timer = 0f;
             }
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.T))
         {
             float duration = Time.time - recordTimer;
             writer.WriteLine(clusterPoseCnt + " " + bestDeviation + " " + duration.ToString());

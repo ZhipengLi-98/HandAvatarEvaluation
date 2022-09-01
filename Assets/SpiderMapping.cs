@@ -44,7 +44,7 @@ public class SpiderMapping : MonoBehaviour
     public GameObject anotherAvatar;
 
     private float bestDeviation = 1e4f;
-    
+
     string ConvertTransformToString(Transform trans)
     {
         string temp = trans.name;
@@ -222,7 +222,7 @@ public class SpiderMapping : MonoBehaviour
                         float angle = 0f;
                         Vector3 axis = Vector3.zero;
                         (a * Quaternion.Inverse(b)).ToAngleAxis(out angle, out axis);
-                        if (angle > 20)
+                        if (angle > 30)
                         {
                             tempFlag = false;
                             break;
@@ -374,7 +374,7 @@ public class SpiderMapping : MonoBehaviour
                 timer = 0f;
             }
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.T))
         {
             float duration = Time.time - recordTimer;
             writer.WriteLine(clusterPoseCnt + " " + bestDeviation + " " + duration.ToString());
@@ -386,6 +386,9 @@ public class SpiderMapping : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            print(player.allMotions.Count);
+            print(recorder.poses.Count);
+            writer.WriteLine("Avatar");
             int tempCnt = 0;
             foreach (List<Transform> t in player.allMotions)
             {
