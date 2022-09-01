@@ -326,9 +326,9 @@ public class SeahorseMapping : MonoBehaviour
                 tempFlag = false;
             }
             // text.text = (tDevia / controlledJoints.Count).ToString();
+            tDevia /= controlledJoints.Count;
             if (tempFlag)
             {
-                tDevia /= controlledJoints.Count;
                 poseDeviations.Add(tDevia);
                 timer += Time.deltaTime;
                 if (timer > 1f)
@@ -352,15 +352,15 @@ public class SeahorseMapping : MonoBehaviour
                 poseDeviations.Clear();
                 timer = 0f;
             }
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            float duration = Time.time - recordTimer;
-            writer.WriteLine(clusterPoseCnt + " " + bestDeviation + " " + duration.ToString());
-            poseFlag = true;
-            timer = 0f;
-            poseDeviations.Clear();
-            text.text = "Complete";
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                float duration = Time.time - recordTimer;
+                writer.WriteLine(clusterPoseCnt + " " + tDevia + " " + duration.ToString());
+                poseFlag = true;
+                timer = 0f;
+                poseDeviations.Clear();
+                text.text = "Complete";
+            }
         }
         
         if (Input.GetKeyDown(KeyCode.Z))
