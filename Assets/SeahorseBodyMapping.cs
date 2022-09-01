@@ -184,7 +184,8 @@ public class SeahorseBodyMapping : MonoBehaviour
             {
                 if (pair.Key.transform.name == "Dummy002")
                 {
-                    pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(0, 180, 0);
+                    Quaternion temp = pair.Value.transform.rotation;
+                    pair.Key.transform.rotation = Quaternion.Euler(-temp.eulerAngles.z, 0, 0) * Quaternion.Euler(0, 90, 0);
                 }
                 else if (pair.Key.transform.name == "Bone002" || pair.Key.transform.name == "Bone004" || pair.Key.transform.name == "Bone006")
                 {

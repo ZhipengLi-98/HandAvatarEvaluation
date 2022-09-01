@@ -1,4 +1,4 @@
-Bone: Right_ForearmStub
+Bone: Left_ForearmStub
 L.Leg: Right_Pinky1
 L.Bone.012: Right_Pinky2
 L.Bone.013: Right_Pinky3

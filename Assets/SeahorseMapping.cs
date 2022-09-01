@@ -254,7 +254,7 @@ public class SeahorseMapping : MonoBehaviour
                 if (pair.Value.transform.name.Contains("Forearm"))
                 {
                     Quaternion temp = pair.Value.transform.rotation;
-                    pair.Key.transform.rotation = Quaternion.Euler(temp.eulerAngles.x, temp.eulerAngles.y, temp.eulerAngles.z + 30) * Quaternion.Euler(0, 180, 90);
+                    pair.Key.transform.rotation = Quaternion.Euler(-temp.eulerAngles.z, 0, 0) * Quaternion.Euler(0, 90, 0);
                 }
                 else if (pair.Key.transform.name.Contains("Bone016") || pair.Value.transform.name.Contains("Thumb"))
                 {

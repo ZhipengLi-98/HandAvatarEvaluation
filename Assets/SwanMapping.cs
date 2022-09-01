@@ -252,7 +252,8 @@ public class SwanMapping : MonoBehaviour
             {
                 if (pair.Value.transform.name.Contains("Right_Forearm"))
                 {
-                    pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(0, 90, 0);
+                    Quaternion temp = pair.Value.transform.rotation;
+                    pair.Key.transform.rotation = Quaternion.Euler(-temp.eulerAngles.z, 0, 0);
                 }
                 else if (pair.Key.transform.name.Contains("Neck"))
                 {

@@ -185,7 +185,7 @@ public class SwanBodyMapping : MonoBehaviour
                 if (pair.Key.transform.name == "Pelvis")
                 {
                     Quaternion temp = pair.Value.transform.rotation;
-                    pair.Key.transform.rotation = Quaternion.Euler(-temp.eulerAngles.z, temp.eulerAngles.y + 90, temp.eulerAngles.x);
+                    pair.Key.transform.rotation = Quaternion.Euler(-temp.eulerAngles.z, 0, 0);
                 }
                 else if (pair.Key.transform.name.Contains("R_Humerus") || pair.Key.transform.name.Contains("R_Ulna"))
                 {

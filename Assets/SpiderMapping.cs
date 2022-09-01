@@ -253,11 +253,8 @@ public class SpiderMapping : MonoBehaviour
                 if (pair.Key.transform.name == "Bone")
                 {
                     // pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(90, 180, 0);
-                    GameObject leftForearm = GameObject.Find("Left_ForearmStub");
-                    GameObject rightForearm = GameObject.Find("Right_ForearmStub");
-                    pair.Key.transform.rotation = Quaternion.Euler((leftForearm.transform.rotation.eulerAngles.x + leftForearm.transform.rotation.eulerAngles.x) / 2,
-                        (leftForearm.transform.rotation.eulerAngles.y + rightForearm.transform.rotation.eulerAngles.y) / 2,
-                        (leftForearm.transform.rotation.eulerAngles.z + leftForearm.transform.rotation.eulerAngles.z) / 2) * Quaternion.Euler(-90, 90, 0);
+                    Quaternion temp = pair.Value.transform.rotation;
+                    pair.Key.transform.rotation = Quaternion.Euler(-temp.eulerAngles.z, 0, 0) * Quaternion.Euler(-90, 0, 0);
                     // pair.Key.transform.rotation = leftForearm.transform.rotation * rightForearm.transform.rotation;
                 }
                 else
