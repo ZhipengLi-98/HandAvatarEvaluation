@@ -204,6 +204,12 @@ public class ElephantBodyMapping : MonoBehaviour
                     Quaternion initial = initialRotations[pair.Key.transform.name];
                     pair.Key.transform.localRotation = Quaternion.Euler(0, 0, temp.eulerAngles.z) * initialRotations[pair.Key.transform.name];
                 }
+                else if (pair.Key.transform.name.Contains("Neck"))
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(-2 * temp.eulerAngles.x, 2 * temp.eulerAngles.y, 2 * temp.eulerAngles.z) * initialRotations[pair.Key.transform.name];
+                }
                 else
                 {
                     pair.Key.transform.localRotation = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
