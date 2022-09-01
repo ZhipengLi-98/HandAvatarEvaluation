@@ -29,7 +29,7 @@ public class Manager : MonoBehaviour
         }
         for (int i = 0; i < 4; i++)
         {
-            temp += " " + trans.rotation[i];
+            temp += " " + trans.localRotation[i];
         }
         return temp;
     }
