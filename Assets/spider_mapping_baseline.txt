@@ -5,3 +5,7 @@ L.Leg: joint_ShoulderLT
 L.Bone.012: joint_ElbowLT
 L.Bone.013: joint_HandLT
 Bone: joint_TorsoB
+R.Leg.002: joint_HipRT
+R.Bone.006: joint_KneeRT
+L.Leg.002: joint_HipLT
+L.Bone.006: joint_KneeLT

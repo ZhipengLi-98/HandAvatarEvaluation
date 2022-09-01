@@ -147,7 +147,7 @@ public class ElephantMapping : MonoBehaviour
     void Start()
     {
         text.text = "Perform the transparent gesture";
-        userName += "_elephant_hand.txt"
+        userName += "_elephant_hand.txt";
         writer = new StreamWriter(userName);
         StreamReader reader = new StreamReader(poseFile);
         string[] content = reader.ReadToEnd().Split("\n");

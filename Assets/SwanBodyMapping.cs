@@ -267,7 +267,6 @@ public class SwanBodyMapping : MonoBehaviour
                 // text.text = child.name + " " + angle.ToString();
                 tempFlag = false;
             }
-            float duration = Time.time - recordTimer;
             // text.text = duration.ToString() + " " + (tDevia / controlledJoints.Count).ToString();
             tDevia /= controlledJoints.Count;
             if (tempFlag)
@@ -282,6 +281,7 @@ public class SwanBodyMapping : MonoBehaviour
                         ttDevia += t;
                     }
                     ttDevia /= poseDeviations.Count;
+                    float duration = Time.time - recordTimer;
                     writer.WriteLine(clusterPoseCnt + " " + ttDevia + " " + duration.ToString());
                     poseFlag = true;
                     timer = 0f;

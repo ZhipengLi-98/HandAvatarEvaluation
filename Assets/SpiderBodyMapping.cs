@@ -186,19 +186,41 @@ public class SpiderBodyMapping : MonoBehaviour
                 {
                     pair.Key.transform.rotation = pair.Value.transform.rotation * Quaternion.Euler(90, 90, 0);
                 }
-                else if (pair.Key.transform.name.Contains("Leg"))
+                else if (pair.Key.transform.name == "R.Leg")
                 {
                     Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
                     Quaternion initial = initialRotations[pair.Key.transform.name];
-                    if (pair.Key.transform.name.Contains("R."))
-                    {
-                        pair.Key.transform.localRotation = Quaternion.Euler(-temp.eulerAngles.x, temp.eulerAngles.z, temp.eulerAngles.y) * initial;
-
-                    }
-                    else if (pair.Key.transform.name.Contains("L."))
-                    {
-                        pair.Key.transform.localRotation = Quaternion.Euler(-temp.eulerAngles.x, -temp.eulerAngles.z, -temp.eulerAngles.y) * initial;
-                    }
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, temp.eulerAngles.z, -temp.eulerAngles.x) * initial;
+                }
+                else if (pair.Key.transform.name == "L.Leg")
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(-temp.eulerAngles.y, 0, -temp.eulerAngles.z) * initial;
+                }
+                else if (pair.Key.transform.name == "R.Leg.002")
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, -temp.eulerAngles.x, 0) * initial;
+                }
+                else if (pair.Key.transform.name == "R.Bone.006")
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, 0, temp.eulerAngles.z) * initial;
+                }
+                else if (pair.Key.transform.name == "L.Leg.002")
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, temp.eulerAngles.x, 0) * initial;
+                }
+                else if (pair.Key.transform.name == "L.Bone.006")
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialUserRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, 0, -temp.eulerAngles.z) * initial;
                 }
                 else if (pair.Key.transform.name.Contains("R.Bone.012") || (pair.Key.transform.name.Contains("R.Bone.013")))
                 {
@@ -297,7 +319,7 @@ public class SpiderBodyMapping : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.T))
             {
-                float duration = Time.time - recordTimer;
+                duration = Time.time - recordTimer;
                 writer.WriteLine(clusterPoseCnt + " " + tDevia + " " + duration.ToString());
                 poseFlag = true;
                 timer = 0f;

@@ -147,7 +147,7 @@ public class SwanMapping : MonoBehaviour
     void Start()
     {
         text.text = "Perform the transparent gesture";
-        userName += "_swan_hand.txt"
+        userName += "_swan_hand.txt";
         writer = new StreamWriter(userName);
         StreamReader reader = new StreamReader(poseFile);
         string[] content = reader.ReadToEnd().Split("\n");
