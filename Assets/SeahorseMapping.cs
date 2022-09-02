@@ -59,6 +59,20 @@ public class SeahorseMapping : MonoBehaviour
         return temp;
     }
 
+    string ConvertQuaternionToString(Quaternion trans)
+    {
+        string temp = "";
+        for (int i = 0; i < 4; i++)
+        {
+            temp += trans[i];
+            if (i < 3)
+            {
+                temp += " ";
+            }
+        }
+        return temp;
+    }
+
     void readMapping()
     {
         StreamReader reader = new StreamReader(mapping_file);
@@ -365,26 +379,34 @@ public class SeahorseMapping : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            int tempCnt = 0;
+            print(player.allMotions.Count);
+            print(recorder.poses.Count);
             writer.WriteLine("Avatar");
-            foreach (List<Transform> t in player.allMotions)
+            int tempCnt = 0;
+            foreach (Dictionary<string, Quaternion> t in player.allMotions)
             {
                 writer.WriteLine(tempCnt);
                 tempCnt += 1;
-                foreach (Transform tt in t)
+                foreach (KeyValuePair<string, Quaternion> pair in t)
                 {
-                    writer.WriteLine(ConvertTransformToString(tt));
+                    if (controlledJoints.Contains(pair.Key))
+                    {
+                        writer.WriteLine(pair.Key + " " + ConvertQuaternionToString(pair.Value));
+                    }
                 }
             }
             writer.WriteLine("Users");
             tempCnt = 0;
-            foreach (List<Transform> i in recorder.poses)
+            foreach (Dictionary<string, Quaternion> i in recorder.poses)
             {
                 writer.WriteLine(tempCnt);
                 tempCnt += 1;
-                foreach (Transform j in i)
+                foreach (KeyValuePair<string, Quaternion> pair in i)
                 {
-                    writer.WriteLine(ConvertTransformToString(j));
+                    if (controlledJoints.Contains(pair.Key))
+                    {
+                        writer.WriteLine(pair.Key + " " + ConvertQuaternionToString(pair.Value));
+                    }
                 }
             }
         }

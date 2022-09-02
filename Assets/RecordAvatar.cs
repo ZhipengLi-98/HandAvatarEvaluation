@@ -15,7 +15,7 @@ public class RecordAvatar : MonoBehaviour
     // public GameObject avatarMesh;
     private string avatarMeshName = "";
 
-    public List<List<Transform>> poses = new List<List<Transform>>();
+    public List<Dictionary<string, Quaternion>> poses = new List<Dictionary<string, Quaternion>>();
 
     // Start is called before the first frame update
     void Start()
@@ -56,13 +56,10 @@ public class RecordAvatar : MonoBehaviour
             // copyAvatar.transform.Find(avatarMeshName).gameObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
 
             // avatarRecord.Add(copyAvatar);
-            List<Transform> temp = new List<Transform>();
+            Dictionary<string, Quaternion> temp = new Dictionary<string, Quaternion>();
             foreach (Transform g in avatar.transform.GetComponentsInChildren<Transform>())
             {
-                if (player.controlledJoints.Contains(g.name))
-                {
-                    temp.Add(g);
-                }
+                temp.Add(g.name, g.localRotation);
             }
             poses.Add(temp);
         }

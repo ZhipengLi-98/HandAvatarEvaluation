@@ -147,7 +147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &282027114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,8 +302,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640515367}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.000014871359, y: -0.6181695, z: 2.4080138}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.000014781952, y: -0.61816955, z: 2.4080138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -463,11 +463,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1014789747999944, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_LocalScale.x
@@ -589,7 +589,7 @@ PrefabInstance:
     - target: {fileID: 5128811620208064792, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5470847905714145899, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
@@ -599,7 +599,7 @@ PrefabInstance:
     - target: {fileID: 5505336437074420642, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5505336437074420642, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
@@ -941,7 +941,7 @@ PrefabInstance:
     - target: {fileID: 5128811620208064792, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5470847905714145899, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
@@ -951,7 +951,7 @@ PrefabInstance:
     - target: {fileID: 5505336437074420642, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5505336437074420642, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
@@ -991,17 +991,17 @@ PrefabInstance:
     - target: {fileID: 5505336437074420642, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5505336437074420642, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5505336437074420642, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5505336437074420642, guid: e42dce10de392fb46b7cf553d7658cf4,
         type: 3}
@@ -1049,7 +1049,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_RootOrder
@@ -1605,11 +1605,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1014789747999944, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_LocalScale.x
@@ -1751,7 +1751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1732268206786806, guid: c6a74181d4000004887343fb87b3c53a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4927695388962516, guid: c6a74181d4000004887343fb87b3c53a, type: 3}
       propertyPath: m_RootOrder
@@ -2279,7 +2279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1607736580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2287,7 +2287,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607736579}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88c20220a0375b24fb3171928bd605c5, type: 3}
   m_Name: 
@@ -2295,7 +2295,7 @@ MonoBehaviour:
   player: {fileID: 2125319943}
   recorder: {fileID: 640515370}
   text: {fileID: 1017920006}
-  userName: crj
+  userName: pyk
   initialLeftHand: {fileID: 1316314245}
   initialRightHand: {fileID: 1863728759}
   leftHand: {fileID: 288957792}
@@ -2329,10 +2329,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39198553f217f78408975ac4ddb77076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1588976842}
+  player: {fileID: 1950752380}
   recorder: {fileID: 640515370}
   text: {fileID: 1017920006}
-  userName: crj
+  userName: pyk
   initialLeftHand: {fileID: 1316314245}
   initialRightHand: {fileID: 1863728759}
   leftHand: {fileID: 288957792}
@@ -2354,7 +2354,7 @@ MonoBehaviour:
   player: {fileID: 809315405}
   recorder: {fileID: 640515370}
   text: {fileID: 1017920006}
-  userName: 
+  userName: pyk
   initialLeftHand: {fileID: 1316314245}
   initialRightHand: {fileID: 1863728759}
   leftHand: {fileID: 288957792}
@@ -2368,7 +2368,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607736579}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b996c150249868f4a948b27fc5fc1a67, type: 3}
   m_Name: 
@@ -2376,7 +2376,7 @@ MonoBehaviour:
   player: {fileID: 1588976842}
   recorder: {fileID: 640515370}
   text: {fileID: 1017920006}
-  userName: crj
+  userName: pyk
   initialLeftHand: {fileID: 1316314245}
   initialRightHand: {fileID: 1863728759}
   leftHand: {fileID: 288957792}
@@ -2396,7 +2396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1581749144712736, guid: e201a24a09e942042b93390d0444d728, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4394718792331072, guid: e201a24a09e942042b93390d0444d728, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2508,7 +2508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 417222, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4
+      value: -0.40000007
       objectReference: {fileID: 0}
     - target: {fileID: 417222, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2524,15 +2524,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 417222, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 417222, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 417222, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 417222, guid: 0f984510500aa47b9b5d23fdae5f99ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2605,7 +2605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400136, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2816,7 +2816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2034417993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2867,7 +2867,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034417992}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e9f8d1cf4772fe4385c02cc803c3402, type: 3}
   m_Name: 
@@ -2879,7 +2879,7 @@ MonoBehaviour:
   player: {fileID: 809315405}
   recorder: {fileID: 640515370}
   text: {fileID: 1017920006}
-  userName: 
+  userName: pyk
   anotherAvatar: {fileID: 809315403}
 --- !u!114 &2034417998
 MonoBehaviour:
@@ -2900,7 +2900,7 @@ MonoBehaviour:
   player: {fileID: 1950752380}
   recorder: {fileID: 640515370}
   text: {fileID: 1017920006}
-  userName: 
+  userName: pyk
   anotherAvatar: {fileID: 1950752378}
 --- !u!114 &2034417999
 MonoBehaviour:
@@ -2909,7 +2909,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034417992}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fee3ba17fcd139459e606371cbdca05, type: 3}
   m_Name: 
@@ -2921,7 +2921,7 @@ MonoBehaviour:
   player: {fileID: 1588976842}
   recorder: {fileID: 640515370}
   text: {fileID: 1017920006}
-  userName: 
+  userName: pyk
   anotherAvatar: {fileID: 1588976840}
 --- !u!114 &2034418000
 MonoBehaviour:
@@ -2942,7 +2942,7 @@ MonoBehaviour:
   player: {fileID: 2125319943}
   recorder: {fileID: 640515370}
   text: {fileID: 1017920006}
-  userName: 
+  userName: pyk
   anotherAvatar: {fileID: 2125319940}
 --- !u!114 &2053081076
 MonoBehaviour:

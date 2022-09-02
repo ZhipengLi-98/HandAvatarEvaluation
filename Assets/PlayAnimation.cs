@@ -7,7 +7,7 @@ public class PlayAnimation : MonoBehaviour
 {
     public string mapping_file = "./Assets/elephant_mapping.txt";
     public List<string> controlledJoints = new List<string>();
-    public List<List<Transform>> allMotions = new List<List<Transform>>();
+    public List<Dictionary<string, Quaternion>> allMotions = new List<Dictionary<string, Quaternion>>();
 
     public Animator animator;     
     public bool isAnimation = false;
@@ -58,13 +58,10 @@ public class PlayAnimation : MonoBehaviour
         }
         if (isAnimation)
         {
-            List<Transform> temp = new List<Transform>();
+            Dictionary<string, Quaternion> temp = new Dictionary<string, Quaternion>();
             foreach (Transform g in this.transform.GetComponentsInChildren<Transform>())
             {
-                if (controlledJoints.Contains(g.name))
-                {
-                    temp.Add(g);
-                }
+                temp.Add(g.name, g.localRotation);
             }
             allMotions.Add(temp);
         }
