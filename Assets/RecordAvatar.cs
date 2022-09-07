@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class RecordAvatar : MonoBehaviour
 {
@@ -8,54 +9,58 @@ public class RecordAvatar : MonoBehaviour
     private bool replay = false;
     private int cnt = 0;
 
-    public PlayAnimation player;
-
     public List<GameObject> avatarRecord = new List<GameObject>();
+    public List<GameObject> avatarTempRecord = new List<GameObject>();
     public GameObject avatar;
-    // public GameObject avatarMesh;
+    public GameObject avatarMesh;
     private string avatarMeshName = "";
+
+    public TextMeshProUGUI text;
 
     public List<Dictionary<string, Quaternion>> poses = new List<Dictionary<string, Quaternion>>();
 
     // Start is called before the first frame update
     void Start()
     {
-        // avatarMeshName = avatarMesh.transform.name;
+        avatarMeshName = avatarMesh.transform.name;
+        text.text = "";
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (flag && player.animator.GetCurrentAnimatorClipInfo(0).Length == 0)
+        if (flag && Input.GetKeyDown(KeyCode.W))
         {
+            text.text = "";
             flag = false;
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (!flag && Input.GetKeyDown(KeyCode.Q))
         {
+            text.text = "Recording";
             flag = true;
             if (flag)
             {
-                foreach (GameObject temp in avatarRecord)
+                foreach (GameObject temp in avatarTempRecord)
                 {
+                    temp.SetActive(true);
                     Destroy(temp);
                 }
-                avatarRecord.Clear();
+                avatarTempRecord.Clear();
                 poses.Clear();
             }
         }
-        if (avatarRecord.Count > 0 && avatarRecord[avatarRecord.Count - 1].activeSelf)
+        if (avatarTempRecord.Count > 0 && avatarTempRecord[avatarTempRecord.Count - 1].activeSelf)
         {
-            avatarRecord[avatarRecord.Count - 1].SetActive(false);
+            avatarTempRecord[avatarTempRecord.Count - 1].SetActive(false);
         }
         if (flag)
         {
-            // GameObject copyAvatar = Instantiate(avatar);
-            // copyAvatar.transform.position = avatar.transform.position;
-            // copyAvatar.transform.rotation = avatar.transform.rotation;
-            // copyAvatar.GetComponent<SwanBodyMapping>().enabled = false;
-            // copyAvatar.transform.Find(avatarMeshName).gameObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
+            GameObject copyAvatar = Instantiate(avatar);
+            copyAvatar.transform.position = avatar.transform.position;
+            copyAvatar.transform.rotation = avatar.transform.rotation;
+            copyAvatar.transform.Find(avatarMeshName).gameObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
 
-            // avatarRecord.Add(copyAvatar);
+            avatarTempRecord.Add(copyAvatar);
             Dictionary<string, Quaternion> temp = new Dictionary<string, Quaternion>();
             foreach (Transform g in avatar.transform.GetComponentsInChildren<Transform>())
             {
@@ -63,34 +68,50 @@ public class RecordAvatar : MonoBehaviour
             }
             poses.Add(temp);
         }
-        // if (Input.GetKeyDown(KeyCode.W))
-        // {
-        //     replay = !replay;  
-        //     cnt = 0;
-        //     foreach (GameObject temp in avatarRecord)
-        //     {
-        //         temp.transform.Find(avatarMeshName).gameObject.GetComponent<SkinnedMeshRenderer>().enabled = true;
-        //         temp.SetActive(false);
-        //     }
-        //     if (replay)
-        //     {
-        //         avatar.SetActive(false);
-        //     }
-        // }        
-        // if (replay && cnt < avatarRecord.Count)
-        // {
-        //     avatarRecord[cnt].SetActive(false);
-        //     cnt += 1;
-        //     if (cnt > avatarRecord.Count - 1)
-        //     {
-        //         replay = false;
-        //         avatar.SetActive(true);
-        //         cnt = 0;
-        //     }
-        //     else
-        //     {
-        //         avatarRecord[cnt].SetActive(true);
-        //     }
-        // }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            text.text = "Saved";
+            foreach (GameObject temp in avatarRecord)
+            {
+                temp.SetActive(true);
+                Destroy(temp);
+            }
+            avatarRecord.Clear();
+            foreach (GameObject temp in avatarTempRecord)
+            {
+                avatarRecord.Add(Instantiate(temp));
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            text.text = "Replay";
+            replay = !replay;  
+            cnt = 0;
+            foreach (GameObject temp in avatarRecord)
+            {
+                temp.transform.Find(avatarMeshName).gameObject.GetComponent<SkinnedMeshRenderer>().enabled = true;
+                temp.SetActive(false);
+            }
+            if (replay)
+            {
+                avatar.SetActive(false);
+            }
+        }        
+        if (replay && cnt < avatarRecord.Count)
+        {
+            avatarRecord[cnt].SetActive(false);
+            cnt += 1;
+            if (cnt > avatarRecord.Count - 1)
+            {
+                text.text = "";
+                replay = false;
+                avatar.SetActive(true);
+                cnt = 0;
+            }
+            else
+            {
+                avatarRecord[cnt].SetActive(true);
+            }
+        }
     }
 }
