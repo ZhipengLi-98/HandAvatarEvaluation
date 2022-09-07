@@ -20,7 +20,7 @@ public class RecordHand : MonoBehaviour
         }
         for (int i = 0; i < 4; i++)
         {
-            temp += " " + trans.localRotation[i];
+            temp += " " + trans.rotation[i];
         }
         return temp;
     }

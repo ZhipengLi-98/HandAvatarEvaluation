@@ -1,0 +1,9 @@
+English DragonPelvis: joint_TorsoB
+English DragonLArm1343: joint_ShoulderLT
+English DragonLArm2343: joint_ElbowLT
+English DragonRArm1343: joint_ShoulderRT
+English DragonRArm2343: joint_ElbowRT
+English DragonLLeg234343: joint_HipLT
+English DragonLLeg354545: joint_KneeLT
+English DragonRLeg234343: joint_HipRT
+English DragonRLeg354545: joint_KneeRT

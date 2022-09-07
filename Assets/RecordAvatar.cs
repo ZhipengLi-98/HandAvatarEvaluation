@@ -61,12 +61,13 @@ public class RecordAvatar : MonoBehaviour
             copyAvatar.transform.Find(avatarMeshName).gameObject.GetComponent<SkinnedMeshRenderer>().enabled = false;
 
             avatarTempRecord.Add(copyAvatar);
-            Dictionary<string, Quaternion> temp = new Dictionary<string, Quaternion>();
-            foreach (Transform g in avatar.transform.GetComponentsInChildren<Transform>())
-            {
-                temp.Add(g.name, g.localRotation);
-            }
-            poses.Add(temp);
+
+            // Dictionary<string, Quaternion> temp = new Dictionary<string, Quaternion>();
+            // foreach (Transform g in avatar.transform.GetComponentsInChildren<Transform>())
+            // {
+            //     temp.Add(g.name, g.localRotation);
+            // }
+            // poses.Add(temp);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {

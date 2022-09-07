@@ -1,0 +1,10 @@
+root: joint_TorsoB
+DUCK_ L UpperArm: joint_ShoulderLT
+DUCK_ L Forearm: joint_ElbowLT
+DUCK_ R UpperArm: joint_ShoulderRT
+DUCK_ R Forearm: joint_ElbowRT
+DUCK_ L Calf: joint_HipLT
+DUCK_ R Calf: joint_HipRT
+DUCK_ L HorseLink: joint_KneeLT
+DUCK_ R HorseLink: joint_KneeRT
+DUCK_ Neck2: joint_Neck

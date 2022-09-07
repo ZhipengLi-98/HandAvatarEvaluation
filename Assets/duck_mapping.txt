@@ -1,0 +1,13 @@
+DUCK_ Pelvis: Right_ForearmStub
+DUCK_ L Calf: Left_Index1
+DUCK_ L HorseLink: Left_Index2
+DUCK_ L Foot: Left_Index3
+DUCK_ L UpperArm: Left_Middle1
+DUCK_ L Forearm: Left_Middle2
+DUCK_ R Calf: Right_Index1
+DUCK_ R HorseLink: Right_Index2
+DUCK_ R Foot: Right_Index3
+DUCK_ R UpperArm: Right_Middle1
+DUCK_ R Forearm: Right_Middle2
+DUCK_ Neck: Right_Thumb1
+DUCK_ Queue de cheval 1: Left_Thumb2

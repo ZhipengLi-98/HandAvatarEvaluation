@@ -1,0 +1,9 @@
+Body: joint_TorsoB
+Arm_0.L: joint_ShoulderLT
+Arm_3.L: joint_ElbowLT
+Arm_0.R: joint_ShoulderRT
+Arm_3.R: joint_ElbowRT
+Leg2_0.L: joint_HipLT
+Leg_2_3.L: joint_KneeLT
+Leg2_0.R: joint_HipRT
+Leg_2_3.R: joint_KneeRT
