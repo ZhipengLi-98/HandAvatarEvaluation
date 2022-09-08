@@ -19,8 +19,24 @@ public class CrabMapping : MonoBehaviour
     
     public string userName = "";
     private bool flag = false;
+    private StreamWriter writer;
 
     public GameObject avatar;
+    public RecordAvatar recorder;
+
+    string ConvertTransformToString(Transform trans)
+    {
+        string temp = trans.name;
+        for (int i = 0; i < 3; i++)
+        {
+            temp += " " + trans.position[i];
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            temp += " " + trans.localRotation[i];
+        }
+        return temp;
+    }
 
     void readMapping()
     {
@@ -65,6 +81,7 @@ public class CrabMapping : MonoBehaviour
     void Start()
     {
         userName += "_crab_hand.txt";
+        writer = new StreamWriter(userName);
         StreamReader reader = new StreamReader(poseFile);
         string[] content = reader.ReadToEnd().Split("\n");
         foreach (string s in content)
@@ -290,6 +307,19 @@ public class CrabMapping : MonoBehaviour
                 else
                 {
                     // pair.Key.transform.localRotation = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]) * initialRotations[pair.Key.transform.name];
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            int tempCnt = 0;
+            foreach (GameObject obj in recorder.avatarRecord)
+            {
+                writer.WriteLine(tempCnt);
+                tempCnt += 1;
+                foreach (Transform g in obj.transform.GetComponentsInChildren<Transform>())
+                {
+                    writer.WriteLine(g.name + " " + ConvertTransformToString(g));
                 }
             }
         }

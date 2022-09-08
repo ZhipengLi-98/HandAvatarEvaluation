@@ -19,9 +19,25 @@ public class DuckMapping : MonoBehaviour
     
     public string userName = "";
     private bool flag = false;
+    private StreamWriter writer;
 
     public GameObject avatar;
+    public RecordAvatar recorder;
 
+    string ConvertTransformToString(Transform trans)
+    {
+        string temp = trans.name;
+        for (int i = 0; i < 3; i++)
+        {
+            temp += " " + trans.position[i];
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            temp += " " + trans.localRotation[i];
+        }
+        return temp;
+    }
+    
     void readMapping()
     {
         StreamReader reader = new StreamReader(mapping_file);
@@ -65,6 +81,7 @@ public class DuckMapping : MonoBehaviour
     void Start()
     {
         userName += "_duck_hand.txt";
+        writer = new StreamWriter(userName);
         StreamReader reader = new StreamReader(poseFile);
         string[] content = reader.ReadToEnd().Split("\n");
         foreach (string s in content)
@@ -207,6 +224,19 @@ public class DuckMapping : MonoBehaviour
                     pair.Key.transform.localRotation = Quaternion.Euler(0, 0, temp.eulerAngles.z) * initial;
                 }
 
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            int tempCnt = 0;
+            foreach (GameObject obj in recorder.avatarRecord)
+            {
+                writer.WriteLine(tempCnt);
+                tempCnt += 1;
+                foreach (Transform g in obj.transform.GetComponentsInChildren<Transform>())
+                {
+                    writer.WriteLine(g.name + " " + ConvertTransformToString(g));
+                }
             }
         }
     }

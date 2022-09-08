@@ -62,12 +62,12 @@ public class RecordAvatar : MonoBehaviour
 
             avatarTempRecord.Add(copyAvatar);
 
-            // Dictionary<string, Quaternion> temp = new Dictionary<string, Quaternion>();
-            // foreach (Transform g in avatar.transform.GetComponentsInChildren<Transform>())
-            // {
-            //     temp.Add(g.name, g.localRotation);
-            // }
-            // poses.Add(temp);
+            Dictionary<string, Quaternion> temp = new Dictionary<string, Quaternion>();
+            foreach (Transform g in avatar.transform.GetComponentsInChildren<Transform>())
+            {
+                temp.Add(g.name, g.localRotation);
+            }
+            poses.Add(temp);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
