@@ -147,7 +147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &282027114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640515367}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b1f996e97926a94bb6ab51fed0d60fd, type: 3}
   m_Name: 
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHand: {fileID: 288957792}
   rightHand: {fileID: 640257166}
-  fileName: duck_hand_pose.txt
+  fileName: penguin_hand_pose.txt
 --- !u!114 &640515372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1057,7 +1057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_RootOrder
@@ -1342,6 +1342,86 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017920004}
   m_CullTransparentMesh: 1
+--- !u!1001 &1041385003
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1402295398667218, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_Name
+      value: Penguin
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95775260556275314, guid: fdfa734d7ca1dae4995b210e5cc49652,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+--- !u!1 &1041385004 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1402295398667218, guid: fdfa734d7ca1dae4995b210e5cc49652,
+    type: 3}
+  m_PrefabInstance: {fileID: 1041385003}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1125649104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1938,7 +2018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1732268206786806, guid: c6a74181d4000004887343fb87b3c53a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4927695388962516, guid: c6a74181d4000004887343fb87b3c53a, type: 3}
       propertyPath: m_RootOrder
@@ -2577,13 +2657,14 @@ GameObject:
   - component: {fileID: 1607736584}
   - component: {fileID: 1607736585}
   - component: {fileID: 1607736586}
+  - component: {fileID: 1607736587}
   m_Layer: 0
   m_Name: HandAvatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1607736580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2713,7 +2794,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607736579}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27f6b5525a76f3c42ad0c97c601be9ed, type: 3}
   m_Name: 
@@ -2723,7 +2804,28 @@ MonoBehaviour:
   leftHand: {fileID: 288957792}
   rightHand: {fileID: 640257166}
   userName: 
+  flag: 0
   avatar: {fileID: 612109445}
+  recorder: {fileID: 640515370}
+--- !u!114 &1607736587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607736579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 749fc140b7ab16143bd222c4a678e49c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialLeftHand: {fileID: 1316314245}
+  initialRightHand: {fileID: 1863728759}
+  leftHand: {fileID: 288957792}
+  rightHand: {fileID: 640257166}
+  userName: 
+  flag: 0
+  avatar: {fileID: 1041385004}
   recorder: {fileID: 640515370}
 --- !u!1001 &1811991730
 PrefabInstance:
@@ -2803,7 +2905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1581749144712736, guid: e201a24a09e942042b93390d0444d728, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4394718792331072, guid: e201a24a09e942042b93390d0444d728, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3018,7 +3120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100176, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400136, guid: ae23d50304c93b9418b65cec8f9fe954, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3232,7 +3334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2034417993
 MonoBehaviour:
   m_ObjectHideFlags: 0

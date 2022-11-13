@@ -1,0 +1,14 @@
+AlienLLeg2: Left_Middle1
+AlienLLegPalm: Left_Middle2
+AlienRLeg2: Left_Index1
+AlienRLegPalm: Left_Index2
+AlienPelvis: Right_ForearmStub
+AlienSpine5: Right_Middle1
+AlienSpine35: Right_Middle2
+AlienHeadBone001: Right_Middle3
+AlienLArmCollarbone: Right_Thumb0
+AlienLArm2: Right_Thumb1
+AlienLArmPalm: Right_Thumb2
+AlienRArmCollarbone: Right_Pinky0
+AlienRArm2: Right_Pinky1
+AlienRArmPalm: Right_Pinky2

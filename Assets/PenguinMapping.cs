@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class DuckMapping : MonoBehaviour
+public class PenguinMapping : MonoBehaviour
 {
-    private string mapping_file = "./Assets/duck_mapping.txt";
+    private string mapping_file = "./Assets/penguin_mapping.txt";
     private Dictionary<GameObject, GameObject> mapping = new Dictionary<GameObject, GameObject>();
     private Dictionary<string, Quaternion> initialRotations = new Dictionary<string, Quaternion>();
     private Dictionary<string, Quaternion> initialHandRotations = new Dictionary<string, Quaternion>();
 
-    private string poseFile = "duck_hand_pose.txt";
+    private string poseFile = "penguin_hand_pose.txt";
     public GameObject initialLeftHand;
     public GameObject initialRightHand;
 
@@ -80,7 +80,7 @@ public class DuckMapping : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        userName += "_duck_hand.txt";
+        userName += "_penguin_hand.txt";
         writer = new StreamWriter(userName);
         StreamReader reader = new StreamReader(poseFile);
         string[] content = reader.ReadToEnd().Split("\n");
@@ -129,7 +129,6 @@ public class DuckMapping : MonoBehaviour
         // initialLeftHand.transform.rotation = Quaternion.Euler(0, 180, 0);
         initialRightHand.transform.position = new Vector3(0f, 0.2f, 0.02f);
         // initialRightHand.transform.rotation = Quaternion.Euler(0, 180, 0);
-        
     }
 
     // Update is called once per frame
@@ -139,91 +138,94 @@ public class DuckMapping : MonoBehaviour
         {
             flag = true;
             readMapping();
-            // leftHand.GetComponent<SkinnedMeshRenderer>().enabled = false;
-            // rightHand.GetComponent<SkinnedMeshRenderer>().enabled = false;
         }
         if (flag)
         {
             foreach (KeyValuePair<GameObject, GameObject> pair in mapping)
             {
-                if (pair.Key.transform.name.Contains("Pelvis"))
+                if (pair.Key.transform.name.Contains("AlienPelvis"))
                 {
                     Quaternion temp = pair.Value.transform.rotation;
-                    pair.Key.transform.rotation = Quaternion.Euler(0, temp.eulerAngles.y, temp.eulerAngles.z) * Quaternion.Euler(180, 180, 0);
+                    pair.Key.transform.rotation = Quaternion.Euler(temp.eulerAngles.x, temp.eulerAngles.y, temp.eulerAngles.z) * Quaternion.Euler(180, 180, 30);
                 }
-                else if (pair.Key.transform.name.Contains("DUCK_ L Calf"))
+                else if (pair.Key.transform.name.Contains("AlienLLeg2"))
                 {
                     Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
                     Quaternion initial = initialRotations[pair.Key.transform.name];
                     pair.Key.transform.localRotation = Quaternion.Euler(temp.eulerAngles.y, 0, -temp.eulerAngles.z) * initial;
                 }
-                else if (pair.Key.transform.name.Contains("DUCK_ L HorseLink"))
+                else if (pair.Key.transform.name.Contains("AlienLLegPalm"))
                 {
                     Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
                     Quaternion initial = initialRotations[pair.Key.transform.name];
                     pair.Key.transform.localRotation = Quaternion.Euler(0, 0, -temp.eulerAngles.z) * initial;
                 }
-                else if (pair.Key.transform.name.Contains("DUCK_ L Foot"))
+                else if (pair.Key.transform.name.Contains("AlienRLegPalm"))
                 {
                     Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
                     Quaternion initial = initialRotations[pair.Key.transform.name];
                     pair.Key.transform.localRotation = Quaternion.Euler(0, 0, -temp.eulerAngles.z) * initial;
                 }
-                else if (pair.Key.transform.name.Contains("DUCK_ R Calf"))
+                else if (pair.Key.transform.name.Contains("AlienRLeg2"))
                 {
                     Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
                     Quaternion initial = initialRotations[pair.Key.transform.name];
                     pair.Key.transform.localRotation = Quaternion.Euler(-temp.eulerAngles.y, 0, -temp.eulerAngles.z) * initial;
                 }
-                else if (pair.Key.transform.name.Contains("DUCK_ R HorseLink"))
-                {
-                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
-                    Quaternion initial = initialRotations[pair.Key.transform.name];
-                    pair.Key.transform.localRotation = Quaternion.Euler(0, 0, -temp.eulerAngles.z) * initial;
-                }
-                else if (pair.Key.transform.name.Contains("DUCK_ R Foot"))
-                {
-                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
-                    Quaternion initial = initialRotations[pair.Key.transform.name];
-                    pair.Key.transform.localRotation = Quaternion.Euler(0, 0, -temp.eulerAngles.z) * initial;
-                }
-                else if (pair.Key.transform.name.Contains("DUCK_ L UpperArm"))
-                {
-                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
-                    Quaternion initial = initialRotations[pair.Key.transform.name];
-                    pair.Key.transform.localRotation = Quaternion.Euler(0, 0, 2f * -temp.eulerAngles.z) * initial;
-                }
-                else if (pair.Key.transform.name.Contains("DUCK_ L Forearm"))
-                {
-                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
-                    Quaternion initial = initialRotations[pair.Key.transform.name];
-                    pair.Key.transform.localRotation = Quaternion.Euler(-temp.eulerAngles.z, 0, 0) * initial;
-                }
-                else if (pair.Key.transform.name.Contains("DUCK_ R UpperArm"))
-                {
-                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
-                    Quaternion initial = initialRotations[pair.Key.transform.name];
-                    pair.Key.transform.localRotation = Quaternion.Euler(0, 0, 2f * -temp.eulerAngles.z) * initial;
-                }
-                else if (pair.Key.transform.name.Contains("DUCK_ R Forearm"))
-                {
-                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
-                    Quaternion initial = initialRotations[pair.Key.transform.name];
-                    pair.Key.transform.localRotation = Quaternion.Euler(temp.eulerAngles.z, 0, 0) * initial;
-                }
-                else if (pair.Key.transform.name == "DUCK_ Neck")
-                {
-                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
-                    Quaternion initial = initialRotations[pair.Key.transform.name];
-                    pair.Key.transform.localRotation = Quaternion.Euler(temp.eulerAngles.y + 15, 0, temp.eulerAngles.z) * initial;
-                }
-                else if (pair.Key.transform.name == "DUCK_ Queue de cheval 1")
+                else if (pair.Key.transform.name.Contains("AlienSpine5"))
                 {
                     Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
                     Quaternion initial = initialRotations[pair.Key.transform.name];
                     pair.Key.transform.localRotation = Quaternion.Euler(0, 0, temp.eulerAngles.z) * initial;
                 }
-
+                else if (pair.Key.transform.name.Contains("AlienSpine35"))
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, 0, temp.eulerAngles.z) * initial;
+                }
+                else if (pair.Key.transform.name.Contains("AlienHeadBone001"))
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, 0, temp.eulerAngles.z) * initial;
+                }
+                else if (pair.Key.transform.name.Contains("AlienLArmCollarbone"))
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, 2.5f * -temp.eulerAngles.z, 0) * initial;
+                }
+                else if (pair.Key.transform.name.Contains("AlienLArm2"))
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, 2.5f * -temp.eulerAngles.z, 0) * initial;
+                }
+                else if (pair.Key.transform.name.Contains("AlienLArmPalm"))
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, 2.5f * -temp.eulerAngles.z, 0) * initial;
+                }
+                else if (pair.Key.transform.name.Contains("AlienRArmCollarbone"))
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, temp.eulerAngles.z, 0) * initial;
+                }
+                else if (pair.Key.transform.name.Contains("AlienRArm2"))
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, temp.eulerAngles.z, 0) * initial;
+                }
+                else if (pair.Key.transform.name.Contains("AlienRArmPalm"))
+                {
+                    Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
+                    Quaternion initial = initialRotations[pair.Key.transform.name];
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, temp.eulerAngles.z, 0) * initial;
+                }
             }
         }
         if (Input.GetKeyDown(KeyCode.Z))
@@ -239,5 +241,6 @@ public class DuckMapping : MonoBehaviour
                 }
             }
         }
+        
     }
 }
