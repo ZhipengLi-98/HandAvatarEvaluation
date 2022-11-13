@@ -348,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHand: {fileID: 288957792}
   rightHand: {fileID: 640257166}
-  fileName: penguin_hand_pose_user.txt
+  fileName: elephant_hand_pose_user.txt
 --- !u!114 &640515372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,7 +471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1014789747999944, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4864296859349792, guid: 9f261fd1add2311419c0a9eaeabc7d13, type: 3}
       propertyPath: m_RootOrder
@@ -1352,6 +1352,10 @@ PrefabInstance:
     - target: {fileID: 1402295398667218, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
       propertyPath: m_Name
       value: Penguin
+      objectReference: {fileID: 0}
+    - target: {fileID: 1402295398667218, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4143342049049280, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2667,7 +2671,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1607736581}
-  - component: {fileID: 1607736580}
   - component: {fileID: 1607736582}
   - component: {fileID: 1607736583}
   - component: {fileID: 1607736584}
@@ -2675,6 +2678,8 @@ GameObject:
   - component: {fileID: 1607736586}
   - component: {fileID: 1607736587}
   - component: {fileID: 1607736588}
+  - component: {fileID: 1607736580}
+  - component: {fileID: 1607736589}
   m_Layer: 0
   m_Name: HandAvatar
   m_TagString: Untagged
@@ -2851,7 +2856,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607736579}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 794632dcb5aa9f5448e04b1a08158c18, type: 3}
   m_Name: 
@@ -2863,6 +2868,26 @@ MonoBehaviour:
   userName: 
   flag: 0
   avatar: {fileID: 1041385004}
+  recorder: {fileID: 640515370}
+--- !u!114 &1607736589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607736579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1050b7a48f255743adb5e6371304ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialLeftHand: {fileID: 1316314245}
+  initialRightHand: {fileID: 1863728759}
+  leftHand: {fileID: 288957792}
+  rightHand: {fileID: 640257166}
+  userName: 
+  flag: 0
+  avatar: {fileID: 770258324}
   recorder: {fileID: 640515370}
 --- !u!1001 &1811991730
 PrefabInstance:
