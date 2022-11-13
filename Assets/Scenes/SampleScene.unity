@@ -348,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHand: {fileID: 288957792}
   rightHand: {fileID: 640257166}
-  fileName: elephant_hand_pose_user.txt
+  fileName: tucano_hand_pose_user.txt
 --- !u!114 &640515372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -727,7 +727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &880113399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2681,6 +2681,7 @@ GameObject:
   - component: {fileID: 1607736580}
   - component: {fileID: 1607736589}
   - component: {fileID: 1607736590}
+  - component: {fileID: 1607736591}
   m_Layer: 0
   m_Name: HandAvatar
   m_TagString: Untagged
@@ -2897,9 +2898,26 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607736579}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fdac8fc64e56c644b7411650596b661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialLeftHand: {fileID: 1316314245}
+  initialRightHand: {fileID: 1863728759}
+  leftHand: {fileID: 288957792}
+  rightHand: {fileID: 640257166}
+  avatar: {fileID: 1749094382}
+--- !u!114 &1607736591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607736579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b5ec81ea136ec1428ca2c5bc19843e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   initialLeftHand: {fileID: 1316314245}
@@ -2972,6 +2990,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4799956349195796, guid: 34213037c20ca11429ac8a07b22026ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95897687497705684, guid: 34213037c20ca11429ac8a07b22026ab,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -1,0 +1,8 @@
+English DragonLLeg234343: Left_Ring0
+English DragonLLeg354545: Left_Ring1
+English DragonRLeg23454: Right_Ring0
+English DragonRLeg3543: Right_Ring1
+English DragonLArmCollarbone3453: Right_Middle1
+English DragonRArmCollarbone443: Left_Middle1
+English DragonSpine23433: Right_Pinky1
+English DragonPelvis: Right_ForearmStub
