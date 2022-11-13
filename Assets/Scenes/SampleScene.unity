@@ -348,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHand: {fileID: 288957792}
   rightHand: {fileID: 640257166}
-  fileName: penguin_hand_pose.txt
+  fileName: penguin_hand_pose_user.txt
 --- !u!114 &640515372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1353,6 +1353,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Penguin
       objectReference: {fileID: 0}
+    - target: {fileID: 4143342049049280, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9534994
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143342049049280, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.11259237
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143342049049280, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.123374596
+      objectReference: {fileID: 0}
+    - target: {fileID: 4143342049049280, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.25087953
+      objectReference: {fileID: 0}
     - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
       propertyPath: m_RootOrder
       value: 25
@@ -1375,11 +1391,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.158
       objectReference: {fileID: 0}
     - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0.744
       objectReference: {fileID: 0}
     - target: {fileID: 4522088510251618, guid: fdfa734d7ca1dae4995b210e5cc49652, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2658,6 +2674,7 @@ GameObject:
   - component: {fileID: 1607736585}
   - component: {fileID: 1607736586}
   - component: {fileID: 1607736587}
+  - component: {fileID: 1607736588}
   m_Layer: 0
   m_Name: HandAvatar
   m_TagString: Untagged
@@ -2814,9 +2831,29 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607736579}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 749fc140b7ab16143bd222c4a678e49c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialLeftHand: {fileID: 1316314245}
+  initialRightHand: {fileID: 1863728759}
+  leftHand: {fileID: 288957792}
+  rightHand: {fileID: 640257166}
+  userName: 
+  flag: 0
+  avatar: {fileID: 1041385004}
+  recorder: {fileID: 640515370}
+--- !u!114 &1607736588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607736579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 794632dcb5aa9f5448e04b1a08158c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   initialLeftHand: {fileID: 1316314245}
@@ -2840,7 +2877,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 196806, guid: 678919f4d1dee8e46a2a21cb2a702650, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 446128, guid: 678919f4d1dee8e46a2a21cb2a702650, type: 3}
       propertyPath: m_RootOrder
