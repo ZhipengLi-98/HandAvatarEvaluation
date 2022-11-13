@@ -1,0 +1,8 @@
+English DragonPelvis: Right_ForearmStub
+English DragonLLeg234343: Left_Middle1
+English DragonLLeg354545: Left_Middle2
+English DragonRLeg23454: Left_Index1
+English DragonRLeg3543: Left_Index2
+English DragonLArmCollarbone3453: Right_Thumb1
+English DragonRArmCollarbone443: Right_Pinky1
+English DragonSpine23433: Right_Middle1
