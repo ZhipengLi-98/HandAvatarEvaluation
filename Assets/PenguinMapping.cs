@@ -194,19 +194,19 @@ public class PenguinMapping : MonoBehaviour
                 {
                     Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
                     Quaternion initial = initialRotations[pair.Key.transform.name];
-                    pair.Key.transform.localRotation = Quaternion.Euler(0, 2.5f * -temp.eulerAngles.z, 0) * initial;
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, 2f * -temp.eulerAngles.z, 0) * initial;
                 }
                 else if (pair.Key.transform.name.Contains("AlienLArm2"))
                 {
                     Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
                     Quaternion initial = initialRotations[pair.Key.transform.name];
-                    pair.Key.transform.localRotation = Quaternion.Euler(0, 2.5f * -temp.eulerAngles.z, 0) * initial;
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, 2f * -temp.eulerAngles.z, 0) * initial;
                 }
                 else if (pair.Key.transform.name.Contains("AlienLArmPalm"))
                 {
                     Quaternion temp = pair.Value.transform.localRotation * Quaternion.Inverse(initialHandRotations[pair.Value.transform.name]);
                     Quaternion initial = initialRotations[pair.Key.transform.name];
-                    pair.Key.transform.localRotation = Quaternion.Euler(0, 2.5f * -temp.eulerAngles.z, 0) * initial;
+                    pair.Key.transform.localRotation = Quaternion.Euler(0, 1f * -temp.eulerAngles.z, 0) * initial;
                 }
                 else if (pair.Key.transform.name.Contains("AlienRArmCollarbone"))
                 {
