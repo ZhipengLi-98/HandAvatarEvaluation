@@ -1,0 +1,12 @@
+trithemis_r_ForeCosta1_bone: Left_Middle1
+trithemis_r_HindCosta1_bone: Left_Index1
+trithemis_l_ForeCosta1_bone: Right_Middle1
+trithemis_l_HindCosta1_bone: Right_Index1
+trithemis_r_ForeCoxa_bone: Left_Pinky1
+trithemis_r_Coxa_bone: Left_Ring1
+trithemis_r_HindCoxa_bone: Left_Thumb1
+trithemis_l_ForeCoxa_bone: Right_Pinky1
+trithemis_l_Coxa_bone: Right_Ring1
+trithemis_l_HindCoxa_bone: Right_Thumb1
+trithemis_Thorax1_bone: Left_ForearmStub
+trithemis_Thorax2_bone: Right_ForearmStub
