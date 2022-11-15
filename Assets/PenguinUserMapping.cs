@@ -80,10 +80,25 @@ public class PenguinUserMapping : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        avatar.SetActive(true);
         userName += "_penguin_hand_user.txt";
         writer = new StreamWriter(userName);
         StreamReader reader = new StreamReader(poseFile);
         string[] content = reader.ReadToEnd().Split("\n");
+        Vector3 leftWristPos = Vector3.zero;
+        Vector3 rightWristPos = Vector3.zero;
+        foreach (string s in content)
+        {
+            string[] information = s.Split(" ");
+            if (information[0].Contains("Left_WristRoot"))
+            {
+                leftWristPos = new Vector3(float.Parse(information[1]), float.Parse(information[2]), float.Parse(information[3])) - new Vector3(-0.1f, -0.3f, 0.4f);
+            }
+            else if (information[0].Contains("Right_WristRoot"))
+            {
+                rightWristPos = new Vector3(float.Parse(information[1]), float.Parse(information[2]), float.Parse(information[3])) - new Vector3(0.1f, -0.3f, 0.4f);
+            }
+        }
         foreach (string s in content)
         {
             string[] information = s.Split(" ");
@@ -98,7 +113,7 @@ public class PenguinUserMapping : MonoBehaviour
                     string temp = UppercaseFirst(g.name.Split("_")[2]);
                     if (information[0].Contains(temp))
                     {
-                        g.position = new Vector3(float.Parse(information[1]), float.Parse(information[2]), float.Parse(information[3]));
+                        g.position = new Vector3(float.Parse(information[1]), float.Parse(information[2]), float.Parse(information[3])) - leftWristPos;
                         g.rotation = new Quaternion(float.Parse(information[4]), float.Parse(information[5]), float.Parse(information[6]), float.Parse(information[7]));
                         initialHandRotations.Add(information[0], g.transform.localRotation);
                         break;
@@ -116,7 +131,7 @@ public class PenguinUserMapping : MonoBehaviour
                     string temp = UppercaseFirst(g.name.Split("_")[2]);
                     if (information[0].Contains(temp))
                     {
-                        g.position = new Vector3(float.Parse(information[1]), float.Parse(information[2]), float.Parse(information[3]));
+                        g.position = new Vector3(float.Parse(information[1]), float.Parse(information[2]), float.Parse(information[3])) - rightWristPos;
                         g.rotation = new Quaternion(float.Parse(information[4]), float.Parse(information[5]), float.Parse(information[6]), float.Parse(information[7]));
                         initialHandRotations.Add(information[0], g.transform.localRotation);
                         break;
@@ -124,11 +139,6 @@ public class PenguinUserMapping : MonoBehaviour
                 }
             }
         }
-        initialLeftHand.transform.position = new Vector3(0f, 0.2f, 0.02f);
-        // initialLeftHand.SetActive(false);
-        // initialLeftHand.transform.rotation = Quaternion.Euler(0, 180, 0);
-        initialRightHand.transform.position = new Vector3(0f, 0.2f, 0.02f);
-        // initialRightHand.transform.rotation = Quaternion.Euler(0, 180, 0);
     }
 
     // Update is called once per frame
@@ -138,6 +148,8 @@ public class PenguinUserMapping : MonoBehaviour
         {
             flag = true;
             readMapping();
+            initialLeftHand.SetActive(false);
+            initialRightHand.SetActive(false);
         }
         if (flag)
         {
