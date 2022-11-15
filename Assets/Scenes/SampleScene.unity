@@ -348,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHand: {fileID: 288957792}
   rightHand: {fileID: 640257166}
-  fileName: dragonfly_hand_pose.txt
+  fileName: dragonfly_hand_pose_user.txt
 --- !u!114 &640515372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2683,6 +2683,7 @@ GameObject:
   - component: {fileID: 1607736590}
   - component: {fileID: 1607736591}
   - component: {fileID: 1607736592}
+  - component: {fileID: 1607736593}
   m_Layer: 0
   m_Name: HandAvatar
   m_TagString: Untagged
@@ -2933,9 +2934,29 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607736579}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92f02a26746dffc45aeb46f89318af4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialLeftHand: {fileID: 1316314245}
+  initialRightHand: {fileID: 1863728759}
+  leftHand: {fileID: 288957792}
+  rightHand: {fileID: 640257166}
+  userName: 
+  flag: 0
+  avatar: {fileID: 2106270828}
+  recorder: {fileID: 640515370}
+--- !u!114 &1607736593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607736579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493eda8ac32a65749baffdc80fe7cd3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   initialLeftHand: {fileID: 1316314245}
