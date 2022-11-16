@@ -158,7 +158,7 @@ public class ElephantUserMapping : MonoBehaviour
                 if (pair.Key.transform.name.Contains("Root_M"))
                 {
                     Quaternion temp = pair.Value.transform.rotation;
-                    pair.Key.transform.rotation = Quaternion.Euler(-temp.eulerAngles.z, 0, 0) * Quaternion.Euler(0, -90, 0);
+                    pair.Key.transform.rotation = Quaternion.Euler(-temp.eulerAngles.z, temp.eulerAngles.x, 0) * Quaternion.Euler(0, -90, 180);
                 }
                 else if (pair.Key.transform.name.Contains("_M"))
                 {

@@ -1,7 +1,7 @@
-AlienLLeg2: Left_Pinky0
-AlienLLegPalm: Left_Pinky1
-AlienRLeg2: Left_Thumb0
-AlienRLegPalm: Left_Thumb1
+AlienLLeg2: Left_Pinky1
+AlienLLegPalm: Left_Pinky2
+AlienRLeg2: Left_Thumb1
+AlienRLegPalm: Left_Thumb2
 AlienPelvis: Left_ForearmStub
 AlienSpine3: Left_Middle1
 AlienHeadBone001: Left_Middle3
